@@ -4,30 +4,42 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 <session-factory name="PostgreSQL">
-  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-  <property name="hibernate.connection.password">postgres</property>
-  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/webtoxpi</property>
-  <property name="hibernate.connection.username">postgres</property>
-  <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-  <property name="hibernate.current_session_context_class">thread</property>
-  <property name="hibernate.enable_lazy_load_no_trans">true</property>
-  <property name="hbm2ddl.auto">create</property>
-  <property name="hibernate.hbm2ddl.auto">update</property>
-  <property name="show_sql">true</property>
-
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Components" file="edu/tamu/webtoxpi/dao/entity/Components.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Components.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Importinfo" file="edu/tamu/webtoxpi/dao/entity/Importinfo.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Importinfo.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Notes" file="edu/tamu/webtoxpi/dao/entity/Notes.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Notes.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Orders" file="edu/tamu/webtoxpi/dao/entity/Orders.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Orders.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Projectmembers" file="edu/tamu/webtoxpi/dao/entity/Projectmembers.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Projectmembers.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Projects" file="edu/tamu/webtoxpi/dao/entity/Projects.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Projects.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Results" file="edu/tamu/webtoxpi/dao/entity/Results.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Results.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Resultshistory" file="edu/tamu/webtoxpi/dao/entity/Resultshistory.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Resultshistory.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Rowheaders" file="edu/tamu/webtoxpi/dao/entity/Rowheaders.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Rowheaders.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Rowtypes" file="edu/tamu/webtoxpi/dao/entity/Rowtypes.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Rowtypes.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Units" file="edu/tamu/webtoxpi/dao/entity/Units.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Units.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Userroles" file="edu/tamu/webtoxpi/dao/entity/Userroles.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Userroles.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Users" file="edu/tamu/webtoxpi/dao/entity/Users.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Users.hbm.xml"/>
-  <mapping class="edu.tamu.webtoxpi.dao.entity.Viewtemplates" file="edu/tamu/webtoxpi/dao/entity/Viewtemplates.hbm.xml" package="edu.tamu.webtoxpi.dao.entity" resource="edu/tamu/webtoxpi/dao/entity/Viewtemplates.hbm.xml"/>
+	<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+	<property name="hibernate.connection.password">postgres</property>
+	<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/webtoxpi</property>
+	<property name="hibernate.connection.username">postgres</property>
+	<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+	<property name="hibernate.enable_lazy_load_no_trans">true</property>
+	
+	
+	<!-- c3p0 config http://www.hibernate.org/214.html -->
+	<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>        
+	<property name="hibernate.c3p0.acquire_increment">1</property>
+	<property name="hibernate.c3p0.idle_test_period">60</property>
+	<property name="hibernate.c3p0.min_size">1</property>
+	<property name="hibernate.c3p0.max_size">2</property>
+	<property name="hibernate.c3p0.max_statements">50</property>
+	<property name="hibernate.c3p0.timeout">0</property>
+	<property name="hibernate.c3p0.acquireRetryAttempts">1</property>
+	<property name="hibernate.c3p0.acquireRetryDelay">250</property>
+	<property name="hibernate.show_sql">true</property>
+	<property name="hibernate.use_sql_comments">true</property>
+	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+	<property name="hibernate.current_session_context_class">thread</property>
+	
+	<mapping class="edu.tamu.webtoxpi.dao.model.Components" file="edu/tamu/webtoxpi/dao/model/Components.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Components.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Importinfo" file="edu/tamu/webtoxpi/dao/model/Importinfo.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Importinfo.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Notes" file="edu/tamu/webtoxpi/dao/model/Notes.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Notes.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Orders" file="edu/tamu/webtoxpi/dao/model/Orders.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Orders.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Projectmembers" file="edu/tamu/webtoxpi/dao/model/Projectmembers.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Projectmembers.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Projects" file="edu/tamu/webtoxpi/dao/model/Projects.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Projects.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Results" file="edu/tamu/webtoxpi/dao/model/Results.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Results.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Resultshistory" file="edu/tamu/webtoxpi/dao/model/Resultshistory.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Resultshistory.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Rowheaders" file="edu/tamu/webtoxpi/dao/model/Rowheaders.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Rowheaders.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Rowtypes" file="edu/tamu/webtoxpi/dao/model/Rowtypes.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Rowtypes.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Units" file="edu/tamu/webtoxpi/dao/model/Units.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Units.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Userroles" file="edu/tamu/webtoxpi/dao/model/Userroles.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Userroles.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Users" file="edu/tamu/webtoxpi/dao/model/Users.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Users.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Viewtemplates" file="edu/tamu/webtoxpi/dao/model/Viewtemplates.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Viewtemplates.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>

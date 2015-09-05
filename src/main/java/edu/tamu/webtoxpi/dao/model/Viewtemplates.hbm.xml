@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.webtoxpi.dao.model.Viewtemplates" table="viewtemplates" schema="public" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usersByUpdatedby" class="edu.tamu.webtoxpi.dao.model.Users" fetch="select">
+            <column name="updatedby" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usersByUserId" class="edu.tamu.webtoxpi.dao.model.Users" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="code" not-null="true" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="objectxml" type="serializable">
+            <column name="objectxml" />
+        </property>
+        <property name="updateddt" type="timestamp">
+            <column name="updateddt" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
