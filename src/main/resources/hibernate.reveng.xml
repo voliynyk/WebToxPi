@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-name="components"/>
+  <table-filter match-name="importinfo"/>
+  <table-filter match-name="notes"/>
+  <table-filter match-name="orders"/>
+  <table-filter match-name="projectmembers"/>
+  <table-filter match-name="projects"/>
+  <table-filter match-name="results"/>
+  <table-filter match-name="resultshistory"/>
+  <table-filter match-name="rowheaders"/>
+  <table-filter match-name="rowtypes"/>
+  <table-filter match-name="units"/>
+  <table-filter match-name="userroles"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="viewtemplates"/>
+</hibernate-reverse-engineering>
