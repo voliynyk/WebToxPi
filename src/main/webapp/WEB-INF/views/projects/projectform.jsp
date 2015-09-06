@@ -61,17 +61,27 @@
 			</div>
 		</spring:bind>
 		
-		<spring:bind path="projectType">
+		<spring:bind path="projecttype">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Type</label>
 				<div class="col-sm-5">
-					<form:select path="projectType" class="form-control">
+					<form:select path="projecttype" class="form-control">
 						<form:option value="NONE" label="--- Select ---" />
 						<form:options items="${projectTypeList}" />
 					</form:select>
-					<form:errors path="projectType" class="control-label" />
+					<form:errors path="projecttype" class="control-label" />
 				</div>
 				<div class="col-sm-5"></div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="notes">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Project Description</label>
+				<div class="col-sm-10">
+					<form:textarea path="notes" rows="5" class="form-control" id="state" placeholder="Description" />
+					<form:errors path="notes" class="control-label" />
+				</div>
 			</div>
 		</spring:bind>
 		

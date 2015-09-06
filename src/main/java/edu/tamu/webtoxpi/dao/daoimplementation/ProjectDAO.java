@@ -8,75 +8,144 @@ import org.springframework.stereotype.Repository;
 import edu.tamu.webtoxpi.dao.daointeface.IProjectDAO;
 import edu.tamu.webtoxpi.dao.entity.Project;
 import edu.tamu.webtoxpi.dao.model.Projects;
+import edu.tamu.webtoxpi.dao.model.Projecttypes;
 import edu.tamu.webtoxpi.dao.model.Users;
 import edu.tamu.webtoxpi.dao.util.GenericDAOImpl;
 import edu.tamu.webtoxpi.dao.util.HibernateUtil;
+import edu.tamu.webtoxpi.service.manager.DAOManager;
+import edu.tamu.webtoxpi.utils.Auth;
+import edu.tamu.webtoxpi.utils.DateUtil;
 
 @Repository
 public class ProjectDAO extends GenericDAOImpl<Projects, Integer> implements IProjectDAO
 {
 	public Project convertToEntity(Projects project)
 	{
-		Project result = new Project(project.getId(), project.getUsers().getId(), project.getProjecttypes().getId(), project.getCode(), project.getName(), project.getAccess(), project.getRegistereddt(), project.getLastvisitdt());
+		Project result = new Project();
+		if (project != null)
+		{
+			result.setId(project.getId());
+			result.setCode(project.getCode());
+			result.setName(project.getName());
+			result.setAccess(project.getAccess());
+			result.setProjecttype(project.getProjecttypes().getId());
+		}
+
 		return result;
 	}
 	
 	public Projects convertToDAO(Project project)
 	{
-		Projects result = findByID(Users.class, project.getId());
-		result.setCode(project.getCode());
-		result.setName(project.getName());
-		result.setAccess(project.getAccess());
+		Projects result = null;
+		if (project.isNew())
+		{
+			result = new Projects();
+			result.setUsers(Auth.getCurrentUser());
+			result.setRegistereddt(DateUtil.GetCurrentDate());
+			result.setLastvisitdt(DateUtil.GetCurrentDate());
+		}
+		else
+		{
+			result = findByID(Users.class, project.getId());
+		}
+
+		if (result != null)
+		{
+			result.setCode(project.getCode());
+			result.setName(project.getName());
+			result.setAccess(project.getAccess());
+			result.setProjecttypes(DAOManager.getInstance().getProjectTypeDAO().findByID(Projecttypes.class, project.getProjecttype()));
+		}
+		
 		return result;
 	}
 	
 	@Override
 	public Project findByID(Integer id)
 	{
-    	HibernateUtil.beginTransaction();
-    	Projects project = findByID(Projects.class, id);
-    	HibernateUtil.rollbackTransaction();
+		Projects project = null;
+		try
+		{
+			HibernateUtil.beginTransaction();
+			project = findByID(Projects.class, id);
+		}
+		catch (Exception e)
+		{
+		}
+		finally
+		{
+			HibernateUtil.rollbackTransaction();
+		}
+
         return convertToEntity(project);
 	}
 
 	@Override
 	public List<Project> findAll()
 	{
-		HibernateUtil.beginTransaction();
-		List<Project> result = new ArrayList<Project>(); 
-		List<Projects> projects = findAll(Projects.class);
-		for (Projects project : projects)
+		List<Project> result = new ArrayList<Project>();
+		try
 		{
-			result.add(convertToEntity(project));
+			HibernateUtil.beginTransaction();
+			List<Projects> projects = findAll(Projects.class);
+			for (Projects project : projects)
+			{
+				result.add(convertToEntity(project));
+			}
 		}
-		HibernateUtil.rollbackTransaction();
+		catch (Exception e)
+		{
+		}
+		finally
+		{
+			HibernateUtil.rollbackTransaction();
+		}
 		return result;
 	}
 
 	@Override
 	public void save(Project project)
 	{
-		HibernateUtil.beginTransaction();
-		Projects result = new Projects();
-		result.setCode(project.getCode());
-		result.setName(project.getName());
-		result.setAccess(project.getAccess());
-		save(result);
-		HibernateUtil.commitTransaction();
+		try
+		{
+			HibernateUtil.beginTransaction();
+			save(convertToDAO(project));
+			HibernateUtil.commitTransaction();
+		}
+		catch (Exception e)
+		{
+			HibernateUtil.rollbackTransaction();
+		}
 	}
 
 	@Override
 	public void update(Project project)
 	{
-		HibernateUtil.beginTransaction();
-		merge(convertToDAO(project));
-		HibernateUtil.commitTransaction();
+		try
+		{
+			HibernateUtil.beginTransaction();
+			merge(convertToDAO(project));
+			HibernateUtil.commitTransaction();
+		}
+		catch (Exception e)
+		{
+			HibernateUtil.rollbackTransaction();
+		}
 	}
 
 	@Override
 	public void delete(int id)
 	{
-		delete(convertToDAO(findByID(id)));
+		try
+		{
+			HibernateUtil.beginTransaction();
+			delete(convertToDAO(findByID(id)));
+			HibernateUtil.commitTransaction();
+		}
+		catch (Exception e)
+		{
+			HibernateUtil.rollbackTransaction();
+		}
 	}
 
 }

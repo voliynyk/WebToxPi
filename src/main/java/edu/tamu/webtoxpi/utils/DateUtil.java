@@ -1,4 +1,4 @@
-package edu.tamu.webtoxpi.util;
+package edu.tamu.webtoxpi.utils;
 
 import java.util.Calendar;
 import java.util.Date;

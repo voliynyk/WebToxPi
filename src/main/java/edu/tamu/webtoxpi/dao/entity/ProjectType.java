@@ -2,32 +2,24 @@ package edu.tamu.webtoxpi.dao.entity;
 
 import java.util.Date;
 
-public class Project implements java.io.Serializable
+public class ProjectType
 {
-	private static final long serialVersionUID = 1L;
-	
 	private Integer id;
-	private Integer user;
-	private Integer projecttype;
 	private String code;
 	private String name;
-	private Integer access;
 	private String notes;
 	private Date registereddt;
 	private Date lastvisitdt;
 
-	public Project()
+	public ProjectType()
 	{
 	}
 
-	public Project(Integer id, Integer user, Integer projecttype, String code, String name, Integer access, Date registereddt, Date lastvisitdt)
+	public ProjectType(Integer id, String code, String name, Date registereddt, Date lastvisitdt)
 	{
 		this.id = id;
-		this.user = user;
-		this.projecttype = projecttype;
 		this.code = code;
 		this.name = name;
-		this.access = access;
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 	}
@@ -35,7 +27,7 @@ public class Project implements java.io.Serializable
 	public boolean isNew() {
 		return (this.id == null);
 	}
-
+	
 	public Integer getId()
 	{
 		return this.id;
@@ -44,26 +36,6 @@ public class Project implements java.io.Serializable
 	public void setId(Integer id)
 	{
 		this.id = id;
-	}
-
-	public Integer getProjecttype()
-	{
-		return this.projecttype;
-	}
-
-	public void setProjecttype(Integer projecttype)
-	{
-		this.projecttype = projecttype;
-	}
-	
-	public Integer getUser()
-	{
-		return this.user;
-	}
-
-	public void setUser(Integer user)
-	{
-		this.user = user;
 	}
 
 	public String getCode()
@@ -84,16 +56,6 @@ public class Project implements java.io.Serializable
 	public void setName(String name)
 	{
 		this.name = name;
-	}
-
-	public Integer getAccess()
-	{
-		return this.access;
-	}
-
-	public void setAccess(Integer access)
-	{
-		this.access = access;
 	}
 
 	public String getNotes()

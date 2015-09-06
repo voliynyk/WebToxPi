@@ -11,7 +11,7 @@ import edu.tamu.webtoxpi.dao.entity.User;
 import edu.tamu.webtoxpi.dao.model.Users;
 import edu.tamu.webtoxpi.dao.util.GenericDAOImpl;
 import edu.tamu.webtoxpi.dao.util.HibernateUtil;
-import edu.tamu.webtoxpi.util.DateUtil;
+import edu.tamu.webtoxpi.utils.DateUtil;
 
 @Repository
 public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
@@ -61,7 +61,6 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 
 		if (user != null)
 		{
-			result.setId(user.getId());
 			result.setLogin(user.getLogin());
 			result.setPassword(user.getPassword());
 			result.setFirstname(user.getFirstname());
@@ -85,9 +84,10 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 	public User findByID(Integer id)
 	{
 		Users user = null;
-		HibernateUtil.beginTransaction();
+		
 		try
 		{
+			HibernateUtil.beginTransaction();
 			user = findByID(Users.class, id);
 		}
 		catch (Exception e)
@@ -104,11 +104,10 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 	@Override
 	public List<User> findAll()
 	{
-		HibernateUtil.beginTransaction();
-
 		List<User> result = new ArrayList<User>();
 		try
 		{
+			HibernateUtil.beginTransaction();
 			List<Users> users = findAll(Users.class);
 			for (Users user : users)
 			{
@@ -129,9 +128,9 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 	@Override
 	public void save(User user)
 	{
-		HibernateUtil.beginTransaction();
 		try
 		{
+			HibernateUtil.beginTransaction();
 			Users result = convertToDAO(user);
 			save(result);
 			HibernateUtil.commitTransaction();
@@ -145,9 +144,9 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 	@Override
 	public void update(User user)
 	{
-		HibernateUtil.beginTransaction();
 		try
 		{
+			HibernateUtil.beginTransaction();
 			merge(convertToDAO(user));
 			HibernateUtil.commitTransaction();
 		}
@@ -160,9 +159,9 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 	@Override
 	public void delete(int id)
 	{
-		HibernateUtil.beginTransaction();
 		try
 		{
+			HibernateUtil.beginTransaction();
 			delete(convertToDAO(findByID(id)));
 			HibernateUtil.commitTransaction();
 		}

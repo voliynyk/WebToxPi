@@ -127,7 +127,6 @@ public class UserController
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex)
 	{
-
 		logger.debug("handleEmptyData()");
 		logger.error("Request: {}, error ", req.getRequestURL(), ex);
 
@@ -142,30 +141,22 @@ public class UserController
 	@RequestMapping(value = "/users/add", method = RequestMethod.GET)
 	public String showAddUserForm(Model model)
 	{
-
 		logger.debug("showAddUserForm()");
-
 		User user = new User();
-
 		// set default value
 		model.addAttribute("userForm", user);
-
 		populateDefaultModel(model);
-
+		
 		return "users/userform";
-
 	}
 
 	// show update form
 	@RequestMapping(value = "/users/{id}/update", method = RequestMethod.GET)
 	public String showUpdateUserForm(@PathVariable("id") int id, Model model)
 	{
-
 		logger.debug("showUpdateUserForm() : {}", id);
-
 		User user = userService.findById(id);
 		model.addAttribute("userForm", user);
-
 		populateDefaultModel(model);
 
 		return "users/userform";
@@ -174,32 +165,6 @@ public class UserController
 
 	private void populateDefaultModel(Model model)
 	{
-
-		List<String> frameworksList = new ArrayList<String>();
-		frameworksList.add("Spring MVC");
-		frameworksList.add("Struts 2");
-		frameworksList.add("JSF 2");
-		frameworksList.add("GWT");
-		frameworksList.add("Play");
-		frameworksList.add("Apache Wicket");
-		model.addAttribute("frameworkList", frameworksList);
-
-		Map<String, String> skill = new LinkedHashMap<String, String>();
-		skill.put("Hibernate", "Hibernate");
-		skill.put("Spring", "Spring");
-		skill.put("Struts", "Struts");
-		skill.put("Groovy", "Groovy");
-		skill.put("Grails", "Grails");
-		model.addAttribute("javaSkillList", skill);
-
-		List<Integer> numbers = new ArrayList<Integer>();
-		numbers.add(1);
-		numbers.add(2);
-		numbers.add(3);
-		numbers.add(4);
-		numbers.add(5);
-		model.addAttribute("numberList", numbers);
-
 		Map<String, String> country = new LinkedHashMap<String, String>();
 		country.put("US", "United Stated");
 		country.put("CN", "China");
