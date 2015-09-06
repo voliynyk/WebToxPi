@@ -27,22 +27,64 @@
 
 		<form:hidden path="id" />
 
-		<spring:bind path="firstName">
+		<spring:bind path="login">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<label class="col-sm-2 control-label">firstName</label>
+				<label class="col-sm-2 control-label">Login</label>
 				<div class="col-sm-10">
-					<form:input path="firstName" type="text" class="form-control " id="firstName" placeholder="First Name" />
-					<form:errors path="firstName" class="control-label" />
+					<form:input path="login" type="text" class="form-control " id="login" placeholder="Login" />
+					<form:errors path="login" class="control-label" />
 				</div>
 			</div>
 		</spring:bind>
 		
-		<spring:bind path="lastName">
+		<spring:bind path="password">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<label class="col-sm-2 control-label">lastName</label>
+				<label class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<form:input path="lastName" type="text" class="form-control " id="lastName" placeholder="Last Name" />
-					<form:errors path="lastName" class="control-label" />
+					<form:password path="password" class="form-control" id="password" placeholder="password" />
+					<form:errors path="password" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+
+		<spring:bind path="confirmPassword">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">confirm Password</label>
+				<div class="col-sm-10">
+					<form:password path="confirmPassword" class="form-control" id="password" placeholder="password" />
+					<form:errors path="confirmPassword" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="firstname">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">First Name</label>
+				<div class="col-sm-10">
+					<form:input path="firstname" type="text" class="form-control " id="firstname" placeholder="First Name" />
+					<form:errors path="firstname" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="lastname">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Last Name</label>
+				<div class="col-sm-10">
+					<form:input path="lastname" type="text" class="form-control " id="lastname" placeholder="Last Name" />
+					<form:errors path="lastname" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="sex">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Sex</label>
+				<div class="col-sm-10">
+					<label class="radio-inline"> <form:radiobutton path="sex" value="M" /> Male
+					</label> <label class="radio-inline"> <form:radiobutton path="sex" value="F" /> Female
+					</label> <br />
+					<form:errors path="sex" class="control-label" />
 				</div>
 			</div>
 		</spring:bind>
@@ -51,8 +93,98 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<form:input path="email" class="form-control" id="email" placeholder="Email" />
+					<form:input path="email" type="text" class="form-control" id="email" placeholder="Email" />
 					<form:errors path="email" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="address1">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Address</label>
+				<div class="col-sm-10">
+					<form:textarea path="address1" type="text" class="form-control" id="address1" placeholder="Address" />
+					<form:errors path="address1" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="address2">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Address</label>
+				<div class="col-sm-10">
+					<form:textarea path="address2" type="text" class="form-control" id="address2" placeholder="Address" />
+					<form:errors path="address2" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="phone">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Phone Number</label>
+				<div class="col-sm-10">
+					<form:textarea path="phone" type="text" class="form-control" id="phone" placeholder="Phone" />
+					<form:errors path="phone" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="country">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Country</label>
+				<div class="col-sm-10">
+					<form:textarea path="country" type="text" class="form-control" id="country" placeholder="Country" />
+					<form:errors path="country" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="state">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">State</label>
+				<div class="col-sm-10">
+					<form:textarea path="state" type="text" class="form-control" id="state" placeholder="State" />
+					<form:errors path="state" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="zip">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Zip Code</label>
+				<div class="col-sm-10">
+					<form:textarea path="zip" type="text" class="form-control" id="state" placeholder="Zip" />
+					<form:errors path="zip" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>		
+		
+		<spring:bind path="organization">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Organization Name</label>
+				<div class="col-sm-10">
+					<form:textarea path="organization" type="text" class="form-control" id="state" placeholder="Organization" />
+					<form:errors path="organization" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>		
+		
+		<spring:bind path="organaddress">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Organization Address</label>
+				<div class="col-sm-10">
+					<form:textarea path="organaddress" type="text" class="form-control" id="state" placeholder="Organization Address" />
+					<form:errors path="organaddress" class="control-label" />
+				</div>
+			</div>
+		</spring:bind>	
+			
+		<spring:bind path="notes">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Notes</label>
+				<div class="col-sm-10">
+					<form:textarea path="notes" rows="5" class="form-control" id="state" placeholder="Notes" />
+					<form:errors path="notes" class="control-label" />
 				</div>
 			</div>
 		</spring:bind>

@@ -1,14 +1,13 @@
 package edu.tamu.webtoxpi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.tamu.webtoxpi.dao.daoimplementation.UserDAO;
-import edu.tamu.webtoxpi.dao.daointefface.IUserDAO;
+import edu.tamu.webtoxpi.dao.daointeface.IUserDAO;
 import edu.tamu.webtoxpi.dao.entity.User;
+import edu.tamu.webtoxpi.service.serviceinterface.IUserService;
 
 @Service("userService")
 public class UserService implements IUserService
@@ -33,8 +32,7 @@ public class UserService implements IUserService
 
 	public void saveOrUpdate(User user)
 	{
-
-		if (findById(user.getId()) == null)
+		if (user.isNew())
 		{
 			userDAO.save(user);
 		}
@@ -42,12 +40,10 @@ public class UserService implements IUserService
 		{
 			userDAO.update(user);
 		}
-
 	}
 
 	public void delete(int id)
 	{
 		userDAO.delete(id);
 	}
-
 }

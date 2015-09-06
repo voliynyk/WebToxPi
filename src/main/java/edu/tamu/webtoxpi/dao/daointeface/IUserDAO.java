@@ -1,4 +1,4 @@
-package edu.tamu.webtoxpi.dao.daointefface;
+package edu.tamu.webtoxpi.dao.daointeface;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package edu.tamu.webtoxpi.service;
+package edu.tamu.webtoxpi.service.serviceinterface;
 
 import java.util.List;
 

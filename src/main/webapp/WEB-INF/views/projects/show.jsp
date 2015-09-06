@@ -20,27 +20,22 @@
 		</div>
 	</c:if>
 
-	<h1>User Detail</h1>
+	<h1>Project Detail</h1>
 	<br />
 
 	<div class="row">
 		<label class="col-sm-2">ID</label>
-		<div class="col-sm-10">${user.id}</div>
+		<div class="col-sm-10">${project.id}</div>
 	</div>
 
 	<div class="row">
 		<label class="col-sm-2">Name</label>
-		<div class="col-sm-10">${user.firstname}</div>
+		<div class="col-sm-10">${project.name}</div>
 	</div>
 	
 	<div class="row">
-		<label class="col-sm-2">Name</label>
-		<div class="col-sm-10">${user.lastname}</div>
-	</div>
-	
-	<div class="row">
-		<label class="col-sm-2">Email</label>
-		<div class="col-sm-10">${user.email}</div>
+		<label class="col-sm-2">Code</label>
+		<div class="col-sm-10">${project.code}</div>
 	</div>
 </div>
 

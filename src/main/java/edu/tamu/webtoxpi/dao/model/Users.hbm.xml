@@ -10,7 +10,7 @@
 				<param name="sequence">users_id_seq</param>
 			</generator>
 		</id>
-        <property name="login" type="string">
+         <property name="login" type="string">
             <column name="login" not-null="true" unique="true" />
         </property>
         <property name="password" type="string">
@@ -24,6 +24,33 @@
         </property>
         <property name="email" type="string">
             <column name="email" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" not-null="true" />
+        </property>
+        <property name="address1" type="string">
+            <column name="address1" not-null="true" />
+        </property>
+        <property name="address2" type="string">
+            <column name="address2" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" not-null="true" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" not-null="true" />
+        </property>
+        <property name="zip" type="string">
+            <column name="zip" not-null="true" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" not-null="true" />
+        </property>
+        <property name="organization" type="string">
+            <column name="organization" />
+        </property>
+        <property name="organaddress" type="string">
+            <column name="organaddress" />
         </property>
         <property name="photo" type="binary">
             <column name="photo" />

@@ -1,13 +1,14 @@
 package edu.tamu.webtoxpi.dao.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Project implements java.io.Serializable
 {
-	private int id;
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
 	private Integer user;
+	private Integer projectType;
 	private String code;
 	private String name;
 	private Integer access;
@@ -19,27 +20,42 @@ public class Project implements java.io.Serializable
 	{
 	}
 
-	public Project(int id, Integer user, String code, String name, int access, Date registereddt, Date lastvisitdt)
+	public Project(Integer id, Integer user, Integer projectType, String code, String name, Integer access, Date registereddt, Date lastvisitdt)
 	{
 		this.id = id;
 		this.user = user;
+		this.projectType = projectType;
 		this.code = code;
 		this.name = name;
 		this.access = access;
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 	}
+	
+	public boolean isNew() {
+		return (this.id == null);
+	}
 
-	public int getId()
+	public Integer getId()
 	{
 		return this.id;
 	}
 
-	public void setId(int id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}
 
+	public Integer getProjectType()
+	{
+		return this.user;
+	}
+
+	public void setProjectType(Integer projectType)
+	{
+		this.projectType = projectType;
+	}
+	
 	public Integer getUser()
 	{
 		return this.user;
@@ -70,12 +86,12 @@ public class Project implements java.io.Serializable
 		this.name = name;
 	}
 
-	public int getAccess()
+	public Integer getAccess()
 	{
 		return this.access;
 	}
 
-	public void setAccess(int access)
+	public void setAccess(Integer access)
 	{
 		this.access = access;
 	}

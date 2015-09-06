@@ -33,6 +33,7 @@
 	<mapping class="edu.tamu.webtoxpi.dao.model.Orders" file="edu/tamu/webtoxpi/dao/model/Orders.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Orders.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Projectmembers" file="edu/tamu/webtoxpi/dao/model/Projectmembers.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Projectmembers.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Projects" file="edu/tamu/webtoxpi/dao/model/Projects.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Projects.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Projecttypes" file="edu/tamu/webtoxpi/dao/model/Projecttypes.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Projecttypes.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Results" file="edu/tamu/webtoxpi/dao/model/Results.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Results.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Resultshistory" file="edu/tamu/webtoxpi/dao/model/Resultshistory.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Resultshistory.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Rowheaders" file="edu/tamu/webtoxpi/dao/model/Rowheaders.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Rowheaders.hbm.xml"/>

@@ -29,4 +29,9 @@
 	</beans:bean>
 	<context:component-scan base-package="com.journaldev.spring.controller" />
 	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<beans:property name="basename" value="classpath:validation" />
+    	<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
+	
 </beans:beans>

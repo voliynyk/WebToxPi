@@ -8,6 +8,7 @@
   <table-filter match-name="orders"/>
   <table-filter match-name="projectmembers"/>
   <table-filter match-name="projects"/>
+  <table-filter match-name="projecttypes"/>
   <table-filter match-name="results"/>
   <table-filter match-name="resultshistory"/>
   <table-filter match-name="rowheaders"/>

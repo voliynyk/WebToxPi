@@ -30,23 +30,30 @@ public class UserFormValidator implements Validator {
 
 		User user = (User) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty.userForm.name");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.userForm.email");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "NotEmpty.userForm.address");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty.userForm.password");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword","NotEmpty.userForm.confirmPassword");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sex", "NotEmpty.userForm.sex");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "country", "NotEmpty.userForm.country");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "NotEmpty.userForm.login");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty.userForm.password");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword","NotEmpty.userForm.confirmPassword");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstname", "NotEmpty.userForm.firstname");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastname", "NotEmpty.userForm.lastname");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.userForm.email");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "NotEmpty.userForm.phone");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address1", "NotEmpty.userForm.address1");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "country", "NotEmpty.userForm.country");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "NotEmpty.userForm.state");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", "NotEmpty.userForm.zip");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sex", "NotEmpty.userForm.sex");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "organization", "NotEmpty.userForm.organization");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "organaddress", "NotEmpty.userForm.organaddress");
 
 		if(!emailValidator.valid(user.getEmail())){
 			errors.rejectValue("email", "Pattern.userForm.email");
 		}
-		
-/*		if(user.getNumber()==null || user.getNumber()<=0){
-			errors.rejectValue("number", "NotEmpty.userForm.number");
-		}*/
-		
-
+		if(user.getCountry().equalsIgnoreCase("none")){
+			errors.rejectValue("country", "NotEmpty.userForm.country");
+		}
+		if (!user.getPassword().equals(user.getConfirmPassword())) {
+			errors.rejectValue("confirmPassword", "Diff.userform.confirmPassword");
+		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package edu.tamu.webtoxpi.dao.model;
-// Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final
+// Generated Sep 6, 2015 12:46:57 PM by Hibernate Tools 4.3.1.Final
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +18,15 @@ public class Users implements java.io.Serializable
 	private String firstname;
 	private String lastname;
 	private String email;
+	private String phone;
+	private String address1;
+	private String address2;
+	private String country;
+	private String state;
+	private String zip;
+	private String sex;
+	private String organization;
+	private String organaddress;
 	private byte[] photo;
 	private String notes;
 	private Date registereddt;
@@ -36,7 +46,8 @@ public class Users implements java.io.Serializable
 	{
 	}
 
-	public Users(int id, String login, String password, String firstname, String lastname, String email, Date registereddt, Date lastvisitdt)
+	public Users(int id, String login, String password, String firstname, String lastname, String email, String phone, String address1, String country, String state, String zip, String sex,
+			Date registereddt, Date lastvisitdt)
 	{
 		this.id = id;
 		this.login = login;
@@ -44,12 +55,19 @@ public class Users implements java.io.Serializable
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.phone = phone;
+		this.address1 = address1;
+		this.country = country;
+		this.state = state;
+		this.zip = zip;
+		this.sex = sex;
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 	}
 
-	public Users(int id, String login, String password, String firstname, String lastname, String email, byte[] photo, String notes, Date registereddt, Date lastvisitdt, Set resultses, Set importinfos,
-			Set componentses, Set resultshistories, Set viewtemplatesesForUpdatedby, Set viewtemplatesesForUserId, Set noteses, Set projectmemberses, Set unitses, Set projectses)
+	public Users(int id, String login, String password, String firstname, String lastname, String email, String phone, String address1, String address2, String country, String state, String zip,
+			String sex, String organization, String organaddress, byte[] photo, String notes, Date registereddt, Date lastvisitdt, Set resultses, Set importinfos, Set componentses, Set resultshistories,
+			Set viewtemplatesesForUpdatedby, Set viewtemplatesesForUserId, Set noteses, Set projectmemberses, Set unitses, Set projectses)
 	{
 		this.id = id;
 		this.login = login;
@@ -57,6 +75,15 @@ public class Users implements java.io.Serializable
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.phone = phone;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.country = country;
+		this.state = state;
+		this.zip = zip;
+		this.sex = sex;
+		this.organization = organization;
+		this.organaddress = organaddress;
 		this.photo = photo;
 		this.notes = notes;
 		this.registereddt = registereddt;
@@ -131,6 +158,96 @@ public class Users implements java.io.Serializable
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+
+	public String getPhone()
+	{
+		return this.phone;
+	}
+
+	public void setPhone(String phone)
+	{
+		this.phone = phone;
+	}
+
+	public String getAddress1()
+	{
+		return this.address1;
+	}
+
+	public void setAddress1(String address1)
+	{
+		this.address1 = address1;
+	}
+
+	public String getAddress2()
+	{
+		return this.address2;
+	}
+
+	public void setAddress2(String address2)
+	{
+		this.address2 = address2;
+	}
+
+	public String getCountry()
+	{
+		return this.country;
+	}
+
+	public void setCountry(String country)
+	{
+		this.country = country;
+	}
+
+	public String getState()
+	{
+		return this.state;
+	}
+
+	public void setState(String state)
+	{
+		this.state = state;
+	}
+
+	public String getZip()
+	{
+		return this.zip;
+	}
+
+	public void setZip(String zip)
+	{
+		this.zip = zip;
+	}
+
+	public String getSex()
+	{
+		return this.sex;
+	}
+
+	public void setSex(String sex)
+	{
+		this.sex = sex;
+	}
+
+	public String getOrganization()
+	{
+		return this.organization;
+	}
+
+	public void setOrganization(String organization)
+	{
+		this.organization = organization;
+	}
+
+	public String getOrganaddress()
+	{
+		return this.organaddress;
+	}
+
+	public void setOrganaddress(String organaddress)
+	{
+		this.organaddress = organaddress;
 	}
 
 	public byte[] getPhoto()
