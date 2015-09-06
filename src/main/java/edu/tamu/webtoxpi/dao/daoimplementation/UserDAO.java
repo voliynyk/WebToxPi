@@ -133,6 +133,7 @@ public class UserDAO extends GenericDAOImpl<Users, Integer>implements IUserDAO
 			HibernateUtil.beginTransaction();
 			Users result = convertToDAO(user);
 			save(result);
+			user.setId(result.getId());
 			HibernateUtil.commitTransaction();
 		}
 		catch (Exception e)

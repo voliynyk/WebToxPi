@@ -109,7 +109,9 @@ public class ProjectDAO extends GenericDAOImpl<Projects, Integer> implements IPr
 		try
 		{
 			HibernateUtil.beginTransaction();
-			save(convertToDAO(project));
+			Projects result = convertToDAO(project);
+			save(result);
+			project.setId(result.getId());
 			HibernateUtil.commitTransaction();
 		}
 		catch (Exception e)
