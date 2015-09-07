@@ -13,6 +13,7 @@ public class Components implements java.io.Serializable
 
 	private int id;
 	private Columnheaders columnheaders;
+	private Projects projects;
 	private Units units;
 	private Users users;
 	private String code;
@@ -26,9 +27,10 @@ public class Components implements java.io.Serializable
 	{
 	}
 
-	public Components(int id, Units units, Users users, String code, String name, Date updateddt)
+	public Components(int id, Projects projects, Units units, Users users, String code, String name, Date updateddt)
 	{
 		this.id = id;
+		this.projects = projects;
 		this.units = units;
 		this.users = users;
 		this.code = code;
@@ -36,10 +38,11 @@ public class Components implements java.io.Serializable
 		this.updateddt = updateddt;
 	}
 
-	public Components(int id, Columnheaders columnheaders, Units units, Users users, String code, String name, String notes, Integer color, Date updateddt, Set resultses)
+	public Components(int id, Columnheaders columnheaders, Projects projects, Units units, Users users, String code, String name, String notes, Integer color, Date updateddt, Set resultses)
 	{
 		this.id = id;
 		this.columnheaders = columnheaders;
+		this.projects = projects;
 		this.units = units;
 		this.users = users;
 		this.code = code;
@@ -68,6 +71,16 @@ public class Components implements java.io.Serializable
 	public void setColumnheaders(Columnheaders columnheaders)
 	{
 		this.columnheaders = columnheaders;
+	}
+	
+	public Projects getProjects()
+	{
+		return this.projects;
+	}
+
+	public void setProjects(Projects projects)
+	{
+		this.projects = projects;
 	}
 
 	public Units getUnits()

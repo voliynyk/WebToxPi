@@ -8,6 +8,9 @@
             <column name="id" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="columntypes" class="edu.tamu.webtoxpi.dao.model.Columntypes" fetch="select">
+            <column name="parent_id" />
+        </many-to-one>
         <many-to-one name="projects" class="edu.tamu.webtoxpi.dao.model.Projects" fetch="select">
             <column name="project_id" not-null="true" />
         </many-to-one>
@@ -32,5 +35,18 @@
             </key>
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Columnheaders" />
         </set>
+        <set name="columntypeses" table="columntypes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_id" />
+            </key>
+            <one-to-many class="edu.tamu.webtoxpi.dao.model.Columntypes" />
+        </set>
     </class>
+    
+    <query name="selectColumnTypesByProject">
+		select res
+		from Columntypes as res
+		inner join res.projects p
+		where p.code = :pcode
+	</query>
 </hibernate-mapping>

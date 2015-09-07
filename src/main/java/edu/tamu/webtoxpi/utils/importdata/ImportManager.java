@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import edu.tamu.webtoxpi.dao.model.Columntypes;
 import edu.tamu.webtoxpi.dao.model.Components;
 import edu.tamu.webtoxpi.dao.model.Orders;
 import edu.tamu.webtoxpi.dao.model.Projects;
@@ -59,17 +60,8 @@ public class ImportManager implements Runnable
 				HibernateUtil.beginTransaction();
 				
 				Projects currentProject = DAOManager.getInstance().getProjectDAO().findByID(Projects.class, projectId);
-				
-				//TODO: DELETE
-				int rowTypeOrder = 0;
-				Rowtypes rowType1 = new Rowtypes(0, currentProject, "SOURCE", "Source", rowTypeOrder++, DateUtil.GetCurrentDate(), DateUtil.GetCurrentDate());
-				Rowtypes rowType2 = new Rowtypes(0, currentProject, "CASRN", "CASR Number", rowTypeOrder++, DateUtil.GetCurrentDate(), DateUtil.GetCurrentDate());
-				Rowtypes rowType3 = new Rowtypes(0, currentProject, "CHEMICAL", "Chemical", rowTypeOrder++, DateUtil.GetCurrentDate(), DateUtil.GetCurrentDate());
-				
-				List<Rowtypes> rowTypes = new ArrayList<Rowtypes>();
-				rowTypes.add(rowType1);
-				rowTypes.add(rowType2);
-				rowTypes.add(rowType3);
+				List<Rowtypes> rowTypes = DAOManager.getInstance().getRowTypeDAO().selectByProject(currentProject.getCode());
+				List<Columntypes> columnTypes = DAOManager.getInstance().getColumnTypeDAO().selectByProject(currentProject.getCode());
 				
 				List<Rowheaders> headerList = new ArrayList<Rowheaders>();
 				List<Components> componentList = new ArrayList<Components>();
@@ -116,11 +108,11 @@ public class ImportManager implements Runnable
 					}
 					if (null == currentComponent)
 					{
-						currentComponent = DAOManager.getInstance().getComponentDAO().findByCode(component.getCode());
+						currentComponent = DAOManager.getInstance().getComponentDAO().findByCodeAndProject(component.getCode(), currentProject.getCode());
 					}
 					if (null == currentComponent)
 					{
-						currentComponent = new Components(0, Auth.getDefaultUnit(), Auth.getCurrentUser(), component.getCode(), component.getCode(), DateUtil.GetCurrentDate());
+						currentComponent = new Components(0, currentProject, Auth.getDefaultUnit(), Auth.getCurrentUser(), component.getCode(), component.getCode(), DateUtil.GetCurrentDate());
 						componentList.add(currentComponent);
 					}
 
@@ -142,10 +134,10 @@ public class ImportManager implements Runnable
 				
 				
 				//Save to DB
-				for (Rowtypes rowType : rowTypes)
+/*				for (Rowtypes rowType : rowTypes)
 				{
 					DAOManager.getInstance().getRowTypeDAO().save(rowType);
-				}
+				}*/
 				for (Rowheaders header : headerList)
 				{
 					DAOManager.getInstance().getRowHeaderDAO().save(header);

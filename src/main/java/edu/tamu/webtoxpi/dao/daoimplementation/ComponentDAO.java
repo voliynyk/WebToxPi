@@ -18,14 +18,14 @@ public class ComponentDAO extends GenericDAOImpl<Components, Integer> implements
 {
 	private final Logger logger = LoggerFactory.getLogger(ComponentDAO.class);
 
-	public Components findByCode(String code)
+	public Components findByCodeAndProject(String code, String pcode)
 	{
 		Components result = null;
 		if (StringUtils.isNotBlank(code))
 		{
 			try
 			{
-				Query query = HibernateUtil.getSession().getNamedQuery("findComponentsByCode").setString("code", code);
+				Query query = HibernateUtil.getSession().getNamedQuery("findComponentsByCodeAndProject").setString("code", code).setString("pcode", pcode);
 				List<Components> results = query.list();
 				if (results != null && results.size() > 0)
 				{

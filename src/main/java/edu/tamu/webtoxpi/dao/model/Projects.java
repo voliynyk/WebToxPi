@@ -22,6 +22,7 @@ public class Projects implements java.io.Serializable
 	private Date lastvisitdt;
 	private Set projectmemberses = new HashSet(0);
 	private Set rowtypeses = new HashSet(0);
+	private Set componentses = new HashSet(0);
 	private Set columntypeses = new HashSet(0);
 	private Set resultses = new HashSet(0);
 
@@ -42,7 +43,7 @@ public class Projects implements java.io.Serializable
 	}
 
 	public Projects(int id, Projecttypes projecttypes, Users users, String code, String name, int access, String notes, Date registereddt, Date lastvisitdt, Set projectmemberses, Set rowtypeses,
-			Set columntypeses, Set resultses)
+			Set componentses, Set columntypeses, Set resultses)
 	{
 		this.id = id;
 		this.projecttypes = projecttypes;
@@ -55,10 +56,12 @@ public class Projects implements java.io.Serializable
 		this.lastvisitdt = lastvisitdt;
 		this.projectmemberses = projectmemberses;
 		this.rowtypeses = rowtypeses;
+		this.componentses = componentses;
 		this.columntypeses = columntypeses;
 		this.resultses = resultses;
+		this.resultses = resultses;
 	}
-
+	
 	public int getId()
 	{
 		return this.id;
@@ -167,6 +170,16 @@ public class Projects implements java.io.Serializable
 	public void setRowtypeses(Set rowtypeses)
 	{
 		this.rowtypeses = rowtypeses;
+	}
+	
+	public Set getComponentses()
+	{
+		return this.componentses;
+	}
+
+	public void setComponentses(Set componentses)
+	{
+		this.componentses = componentses;
 	}
 
 	public Set getColumntypeses()

@@ -12,6 +12,7 @@ public class Columntypes implements java.io.Serializable
 {
 
 	private int id;
+	private Columntypes columntypes;
 	private Projects projects;
 	private String code;
 	private String name;
@@ -19,6 +20,7 @@ public class Columntypes implements java.io.Serializable
 	private Date registereddt;
 	private Date lastvisitdt;
 	private Set columnheaderses = new HashSet(0);
+	private Set columntypeses = new HashSet(0);
 
 	public Columntypes()
 	{
@@ -34,9 +36,10 @@ public class Columntypes implements java.io.Serializable
 		this.lastvisitdt = lastvisitdt;
 	}
 
-	public Columntypes(int id, Projects projects, String code, String name, String notes, Date registereddt, Date lastvisitdt, Set columnheaderses)
+	public Columntypes(int id, Columntypes columntypes, Projects projects, String code, String name, String notes, Date registereddt, Date lastvisitdt, Set columnheaderses, Set columntypeses)
 	{
 		this.id = id;
+		this.columntypes = columntypes;
 		this.projects = projects;
 		this.code = code;
 		this.name = name;
@@ -44,6 +47,7 @@ public class Columntypes implements java.io.Serializable
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 		this.columnheaderses = columnheaderses;
+		this.columntypeses = columntypeses;
 	}
 
 	public int getId()
@@ -54,6 +58,16 @@ public class Columntypes implements java.io.Serializable
 	public void setId(int id)
 	{
 		this.id = id;
+	}
+	
+	public Columntypes getColumntypes()
+	{
+		return this.columntypes;
+	}
+
+	public void setColumntypes(Columntypes columntypes)
+	{
+		this.columntypes = columntypes;
 	}
 
 	public Projects getProjects()
@@ -126,4 +140,13 @@ public class Columntypes implements java.io.Serializable
 		this.columnheaderses = columnheaderses;
 	}
 
+	public Set getColumntypeses()
+	{
+		return this.columntypeses;
+	}
+
+	public void setColumntypeses(Set columntypeses)
+	{
+		this.columntypeses = columntypeses;
+	}
 }

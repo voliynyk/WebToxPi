@@ -5,5 +5,5 @@ import edu.tamu.webtoxpi.dao.util.GenericDAO;
 
 public interface IComponentDAO extends GenericDAO<Components, Integer>
 {
-	public Components findByCode(String code);
+	public Components findByCodeAndProject(String code, String pcode);
 }

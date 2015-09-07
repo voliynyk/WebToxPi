@@ -1,5 +1,6 @@
 package edu.tamu.webtoxpi.dao.daoimplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -39,5 +40,27 @@ public class RowTypeDAO extends GenericDAOImpl<Rowtypes, Integer> implements IRo
 			}
 		}
 		return result;
+	}
+	
+	public List<Rowtypes> selectByProject(String pcode)
+	{		
+		if (StringUtils.isNotBlank(pcode))
+		{
+			try
+			{
+				Query query = HibernateUtil.getSession().getNamedQuery("selectRowTypesByProject").setString("pcode", pcode);
+				List<Rowtypes> types = query.list();
+				if (types != null)
+				{
+					return types;
+				}
+	
+			}
+			catch (Exception e)
+			{
+				logger.error(e.getMessage(), e);
+			}
+		}
+		return new ArrayList<Rowtypes>();
 	}
 }

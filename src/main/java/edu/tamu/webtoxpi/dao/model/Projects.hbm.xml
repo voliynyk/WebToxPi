@@ -46,6 +46,12 @@
             </key>
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Rowtypes" />
         </set>
+        <set name="componentses" table="components" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.webtoxpi.dao.model.Components" />
+        </set>
         <set name="columntypeses" table="columntypes" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="project_id" not-null="true" />

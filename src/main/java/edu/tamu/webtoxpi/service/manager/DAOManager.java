@@ -18,7 +18,8 @@ public class DAOManager
 	protected ProjectTypeDAO projectTypeDAO = null;
 	protected RowTypeDAO rowTypeDAO = null;
 	protected RowHeaderDAO rowHeaderDAO = null;
-	
+	protected ColumnTypeDAO columnTypeDAO = null;
+	protected ColumnHeaderDAO columnHeaderDAO = null;
 	
 	private DAOManager()
 	{
@@ -147,4 +148,21 @@ public class DAOManager
 		return this.rowHeaderDAO;
 	}
 	
+	public ColumnTypeDAO getColumnTypeDAO()
+	{
+		if (this.columnTypeDAO == null)
+		{
+			this.columnTypeDAO = new ColumnTypeDAO();
+		}
+		return this.columnTypeDAO;
+	}
+	
+	public ColumnHeaderDAO getColumnHeaderDAO()
+	{
+		if (this.columnHeaderDAO == null)
+		{
+			this.columnHeaderDAO = new ColumnHeaderDAO();
+		}
+		return this.columnHeaderDAO;
+	}
 }

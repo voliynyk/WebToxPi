@@ -13,6 +13,9 @@
 		<many-to-one name="columnheaders" class="edu.tamu.webtoxpi.dao.model.Columnheaders" fetch="select">
             <column name="columnheader_id" />
         </many-to-one>
+        <many-to-one name="projects" class="edu.tamu.webtoxpi.dao.model.Projects" fetch="select">
+            <column name="project_id" not-null="true" />
+        </many-to-one>
         <many-to-one name="units" class="edu.tamu.webtoxpi.dao.model.Units" fetch="select">
             <column name="unit" not-null="true" />
         </many-to-one>
@@ -42,7 +45,10 @@
         </set>
     </class>
     
-    <query name="findComponentsByCode">
-		select res from Components as res where res.code = :code
+    <query name="findComponentsByCodeAndProject">
+		select res
+		from Components as res
+		inner join res.projects p
+		where res.code = :code and p.code = :pcode
 	</query>
 </hibernate-mapping>
