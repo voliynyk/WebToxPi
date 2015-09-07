@@ -1,4 +1,4 @@
-package edu.tamu.webtoxpi.utils.importdata;
+package edu.tamu.webtoxpi.utils.importdata.toxpi;
 
 public class Component {
     

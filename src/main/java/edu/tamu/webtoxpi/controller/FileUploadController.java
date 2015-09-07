@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.tamu.webtoxpi.utils.importdata.ImportManager;
+
 @Controller
 public class FileUploadController
 {
@@ -38,6 +40,8 @@ public class FileUploadController
 				stream.write(bytes);
 				stream.close();
 
+				parseFile(serverFile);
+				
 				logger.info("Server File Location=" + serverFile.getAbsolutePath());
 
 				return "You successfully uploaded file=" + name;
@@ -89,5 +93,20 @@ public class FileUploadController
 			}
 		}
 		return message;
+	}
+	
+	private void parseFile(File serverFile)
+	{
+		try
+		{
+			Runnable func = new ImportManager(serverFile.getPath());
+			Thread thread = new Thread(func);
+			thread.start();
+		}
+		catch (Exception e)
+		{
+			logger.error(e.getMessage(), e);
+		}
+
 	}
 }

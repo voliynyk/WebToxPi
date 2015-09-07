@@ -52,7 +52,7 @@
 				<label class="col-sm-2 control-label">Access Level</label>
 				<div class="col-sm-5">
 					<form:select path="access" class="form-control">
-						<form:option value="NONE" label="--- Select ---" />
+						<form:option value="0" label="--- Select ---" />
 						<form:options items="${accessList}" />
 					</form:select>
 					<form:errors path="access" class="control-label" />
@@ -66,7 +66,7 @@
 				<label class="col-sm-2 control-label">Project Type</label>
 				<div class="col-sm-5">
 					<form:select path="projecttype" class="form-control">
-						<form:option value="NONE" label="--- Select ---" />
+						<form:option value="0" label="--- Select ---" />
 						<form:options items="${projectTypeList}" />
 					</form:select>
 					<form:errors path="projecttype" class="control-label" />

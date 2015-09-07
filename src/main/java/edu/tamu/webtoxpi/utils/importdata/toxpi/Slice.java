@@ -1,8 +1,10 @@
-package edu.tamu.webtoxpi.utils.importdata;
+package edu.tamu.webtoxpi.utils.importdata.toxpi;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import edu.tamu.webtoxpi.utils.importdata.toxpi.Component;
 
 public class Slice implements Cloneable {
 	private int id;

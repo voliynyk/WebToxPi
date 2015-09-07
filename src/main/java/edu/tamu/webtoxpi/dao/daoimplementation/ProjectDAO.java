@@ -27,6 +27,7 @@ public class ProjectDAO extends GenericDAOImpl<Projects, Integer> implements IPr
 			result.setId(project.getId());
 			result.setCode(project.getCode());
 			result.setName(project.getName());
+			result.setNotes(project.getNotes());
 			result.setAccess(project.getAccess());
 			result.setProjecttype(project.getProjecttypes().getId());
 		}
@@ -53,6 +54,7 @@ public class ProjectDAO extends GenericDAOImpl<Projects, Integer> implements IPr
 		{
 			result.setCode(project.getCode());
 			result.setName(project.getName());
+			result.setNotes(project.getNotes());
 			result.setAccess(project.getAccess());
 			result.setProjecttypes(DAOManager.getInstance().getProjectTypeDAO().findByID(Projecttypes.class, project.getProjecttype()));
 		}

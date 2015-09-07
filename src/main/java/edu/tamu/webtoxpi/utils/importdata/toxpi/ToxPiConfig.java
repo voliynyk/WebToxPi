@@ -1,4 +1,4 @@
-package edu.tamu.webtoxpi.utils.importdata;
+package edu.tamu.webtoxpi.utils.importdata.toxpi;
 
 import java.util.Collections;
 import java.util.HashMap;

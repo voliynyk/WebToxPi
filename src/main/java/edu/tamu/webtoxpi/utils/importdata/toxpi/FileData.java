@@ -1,9 +1,10 @@
-package edu.tamu.webtoxpi.utils.importdata;
+package edu.tamu.webtoxpi.utils.importdata.toxpi;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 
 public class FileData {
     private String fileName;

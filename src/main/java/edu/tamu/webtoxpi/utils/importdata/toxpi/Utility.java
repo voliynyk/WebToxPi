@@ -1,9 +1,11 @@
-package edu.tamu.webtoxpi.utils.importdata;
+package edu.tamu.webtoxpi.utils.importdata.toxpi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+
+import edu.tamu.webtoxpi.utils.importdata.toxpi.Component;
 
 public class Utility {
     public static double roundThreeDecimals(double d) {
