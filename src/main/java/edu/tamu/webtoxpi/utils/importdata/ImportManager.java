@@ -162,10 +162,6 @@ public class ImportManager implements Runnable
 				
 				
 				//Save to DB
-/*				for (Rowtypes rowType : rowTypes)
-				{
-					DAOManager.getInstance().getRowTypeDAO().save(rowType);
-				}*/
 				for (Rowheaders header : rowHeaderList)
 				{
 					DAOManager.getInstance().getRowHeaderDAO().save(header);
@@ -193,10 +189,6 @@ public class ImportManager implements Runnable
 		{
 			logger.error(e.getMessage(), e);
 			HibernateUtil.rollbackTransaction();
-		}
-		finally
-		{
-			
 		}
 	}
 
