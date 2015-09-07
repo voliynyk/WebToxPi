@@ -22,6 +22,9 @@
         <property name="notes" type="string">
             <column name="notes" />
         </property>
+        <property name="color" type="java.lang.Integer">
+            <column name="color" />
+        </property>
         <property name="registereddt" type="timestamp">
             <column name="registereddt" length="29" not-null="true" />
         </property>
@@ -35,4 +38,12 @@
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Orders" />
         </set>
     </class>
+    
+    <query name="findRowHeadersByCodeAndProject">
+		select res
+		from Rowheaders as res
+		inner join res.rowtypes rt
+		inner join rt.projects p
+		where res.code = :code and p.code = :pcode
+	</query>
 </hibernate-mapping>

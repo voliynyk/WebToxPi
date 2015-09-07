@@ -5,5 +5,5 @@ import edu.tamu.webtoxpi.dao.util.GenericDAO;
 
 public interface IRowTypeDAO extends GenericDAO<Rowtypes, Integer>
 {
-
+	public Rowtypes findByCodeAndProject(String code, String pcode);
 }

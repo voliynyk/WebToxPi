@@ -27,6 +27,8 @@
 	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 	<property name="hibernate.current_session_context_class">thread</property>
 	
+	<mapping class="edu.tamu.webtoxpi.dao.model.Columnheaders" file="edu/tamu/webtoxpi/dao/model/Columnheaders.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Columnheaders.hbm.xml"/>
+	<mapping class="edu.tamu.webtoxpi.dao.model.Columntypes" file="edu/tamu/webtoxpi/dao/model/Columntypes.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Columntypes.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Components" file="edu/tamu/webtoxpi/dao/model/Components.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Components.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Importinfo" file="edu/tamu/webtoxpi/dao/model/Importinfo.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Importinfo.hbm.xml"/>
 	<mapping class="edu.tamu.webtoxpi.dao.model.Notes" file="edu/tamu/webtoxpi/dao/model/Notes.hbm.xml" package="edu.tamu.webtoxpi.dao.model" resource="edu/tamu/webtoxpi/dao/model/Notes.hbm.xml"/>

@@ -5,5 +5,5 @@ import edu.tamu.webtoxpi.dao.util.GenericDAO;
 
 public interface IRowHeaderDAO extends GenericDAO<Rowheaders, Integer>
 {
-
+	public Rowheaders findByCodeAndProject(String code, String pcode);
 }

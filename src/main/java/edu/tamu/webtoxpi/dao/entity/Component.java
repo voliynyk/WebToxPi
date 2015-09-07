@@ -1,12 +1,11 @@
 package edu.tamu.webtoxpi.dao.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Component implements java.io.Serializable
 {
 	private Integer id;
+	private Integer columnheader;
 	private Integer unit;
 	private Integer user;
 	private String code;
@@ -20,7 +19,7 @@ public class Component implements java.io.Serializable
 	{
 	}
 
-	public Component(Integer id, Integer unit, Integer user, String code, String name, Date updateddt)
+	public Component(Integer id, Integer columnheader, Integer unit, Integer user, String code, String name, Date updateddt)
 	{
 		this.id = id;
 		this.unit = unit;
@@ -38,6 +37,16 @@ public class Component implements java.io.Serializable
 	public void setId(Integer id)
 	{
 		this.id = id;
+	}
+	
+	public Integer getColumnHeader()
+	{
+		return this.columnheader;
+	}
+
+	public void setColumnHeader(Integer columnheader)
+	{
+		this.columnheader = columnheader;
 	}
 
 	public Integer getUnit()

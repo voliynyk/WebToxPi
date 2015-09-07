@@ -14,7 +14,11 @@ public class DAOManager
 	protected ViewTemplateDAO viewtemplateDAO = null;
 	protected ImportInfoDAO importinfoDAO = null;
 	protected UnitDAO unitDAO = null;
+	protected ProjectDAO projectDAO = null;
 	protected ProjectTypeDAO projectTypeDAO = null;
+	protected RowTypeDAO rowTypeDAO = null;
+	protected RowHeaderDAO rowHeaderDAO = null;
+	
 	
 	private DAOManager()
 	{
@@ -35,6 +39,15 @@ public class DAOManager
 		return instance;
 	}
 
+	public ProjectDAO getProjectDAO()
+	{
+		if (this.projectDAO == null)
+		{
+			this.projectDAO = new ProjectDAO();
+		}
+		return this.projectDAO;
+	}
+	
 	public ProjectTypeDAO getProjectTypeDAO()
 	{
 		if (this.projectTypeDAO == null)
@@ -115,4 +128,23 @@ public class DAOManager
 		}
 		return this.unitDAO;
 	}
+	
+	public RowTypeDAO getRowTypeDAO()
+	{
+		if (this.rowTypeDAO == null)
+		{
+			this.rowTypeDAO = new RowTypeDAO();
+		}
+		return this.rowTypeDAO;
+	}
+	
+	public RowHeaderDAO getRowHeaderDAO()
+	{
+		if (this.rowHeaderDAO == null)
+		{
+			this.rowHeaderDAO = new RowHeaderDAO();
+		}
+		return this.rowHeaderDAO;
+	}
+	
 }

@@ -10,6 +10,9 @@
 				<param name="sequence">components_id_seq</param>
 			</generator>
 		</id>
+		<many-to-one name="columnheaders" class="edu.tamu.webtoxpi.dao.model.Columnheaders" fetch="select">
+            <column name="columnheader_id" />
+        </many-to-one>
         <many-to-one name="units" class="edu.tamu.webtoxpi.dao.model.Units" fetch="select">
             <column name="unit" not-null="true" />
         </many-to-one>
@@ -38,4 +41,8 @@
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Results" />
         </set>
     </class>
+    
+    <query name="findComponentsByCode">
+		select res from Components as res where res.code = :code
+	</query>
 </hibernate-mapping>

@@ -16,6 +16,7 @@ public class Rowheaders implements java.io.Serializable
 	private String code;
 	private String name;
 	private String notes;
+	private Integer color;
 	private Date registereddt;
 	private Date lastvisitdt;
 	private Set orderses = new HashSet(0);
@@ -34,13 +35,14 @@ public class Rowheaders implements java.io.Serializable
 		this.lastvisitdt = lastvisitdt;
 	}
 
-	public Rowheaders(int id, Rowtypes rowtypes, String code, String name, String notes, Date registereddt, Date lastvisitdt, Set orderses)
+	public Rowheaders(int id, Rowtypes rowtypes, String code, String name, String notes, Integer color, Date registereddt, Date lastvisitdt, Set orderses)
 	{
 		this.id = id;
 		this.rowtypes = rowtypes;
 		this.code = code;
 		this.name = name;
 		this.notes = notes;
+		this.color = color;
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 		this.orderses = orderses;
@@ -95,6 +97,16 @@ public class Rowheaders implements java.io.Serializable
 	{
 		this.notes = notes;
 	}
+	
+	public Integer getColor()
+	{
+		return this.color;
+	}
+
+	public void setColor(Integer color)
+	{
+		this.color = color;
+	}
 
 	public Date getRegistereddt()
 	{
@@ -125,5 +137,4 @@ public class Rowheaders implements java.io.Serializable
 	{
 		this.orderses = orderses;
 	}
-
 }

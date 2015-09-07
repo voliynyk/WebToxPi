@@ -11,7 +11,7 @@ public class RowType implements java.io.Serializable
 	private String code;
 	private String name;
 	private String notes;
-	private Integer color;
+	
 	private Date registereddt;
 	private Date lastvisitdt;
 
@@ -66,16 +66,6 @@ public class RowType implements java.io.Serializable
 	public void setNotes(String notes)
 	{
 		this.notes = notes;
-	}
-
-	public Integer getColor()
-	{
-		return this.color;
-	}
-
-	public void setColor(Integer color)
-	{
-		this.color = color;
 	}
 
 	public Date getRegistereddt()

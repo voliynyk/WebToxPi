@@ -3,17 +3,17 @@ package edu.tamu.webtoxpi.utils.importdata;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Results
+public class ImportResult
 {
 	private String value;
-	private Components component;
+	private ImportComponent component;
 	private List<String> rows = new ArrayList<String>();
 	
-	public Results()
+	public ImportResult()
 	{
 	}
 	
-	public Results(String value, Components component, List<String> rows)
+	public ImportResult(String value, ImportComponent component, List<String> rows)
 	{
 		this.value = value;
 		this.component = component;
@@ -30,12 +30,12 @@ public class Results
 		this.value = value;
 	}
 	
-	public Components getComponent()
+	public ImportComponent getComponent()
 	{
 		return component;
 	}
 
-	public void setComponent(Components component)
+	public void setComponent(ImportComponent component)
 	{
 		this.component = component;
 	}

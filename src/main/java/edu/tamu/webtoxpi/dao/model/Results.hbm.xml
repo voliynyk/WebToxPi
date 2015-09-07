@@ -13,6 +13,9 @@
         <many-to-one name="components" class="edu.tamu.webtoxpi.dao.model.Components" fetch="select">
             <column name="component_id" not-null="true" />
         </many-to-one>
+        <many-to-one name="projects" class="edu.tamu.webtoxpi.dao.model.Projects" fetch="select">
+            <column name="project_id" not-null="true" />
+        </many-to-one>
         <many-to-one name="users" class="edu.tamu.webtoxpi.dao.model.Users" fetch="select">
             <column name="updatedby" not-null="true" />
         </many-to-one>

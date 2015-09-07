@@ -5,23 +5,23 @@ import java.util.List;
 
 public class UniversalDataImport
 {
-	private List<Results> results  = new ArrayList<Results>();
+	private List<ImportResult> results  = new ArrayList<ImportResult>();
 	
 	public UniversalDataImport()
 	{
 	}
 	
-	public List<Results> getResults()
+	public List<ImportResult> getResults()
 	{
 		return results;
 	}
 
-	public void setResults(List<Results> results)
+	public void setResults(List<ImportResult> results)
 	{
 		this.results = results;
 	}
 
-	public UniversalDataImport(List<Results> results)
+	public UniversalDataImport(List<ImportResult> results)
 	{
 		this.results = results;
 	}

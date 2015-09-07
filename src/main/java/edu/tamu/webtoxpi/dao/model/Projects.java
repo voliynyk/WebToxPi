@@ -21,6 +21,9 @@ public class Projects implements java.io.Serializable
 	private Date registereddt;
 	private Date lastvisitdt;
 	private Set projectmemberses = new HashSet(0);
+	private Set rowtypeses = new HashSet(0);
+	private Set columntypeses = new HashSet(0);
+	private Set resultses = new HashSet(0);
 
 	public Projects()
 	{
@@ -38,7 +41,8 @@ public class Projects implements java.io.Serializable
 		this.lastvisitdt = lastvisitdt;
 	}
 
-	public Projects(int id, Projecttypes projecttypes, Users users, String code, String name, int access, String notes, Date registereddt, Date lastvisitdt, Set projectmemberses)
+	public Projects(int id, Projecttypes projecttypes, Users users, String code, String name, int access, String notes, Date registereddt, Date lastvisitdt, Set projectmemberses, Set rowtypeses,
+			Set columntypeses, Set resultses)
 	{
 		this.id = id;
 		this.projecttypes = projecttypes;
@@ -50,6 +54,9 @@ public class Projects implements java.io.Serializable
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 		this.projectmemberses = projectmemberses;
+		this.rowtypeses = rowtypeses;
+		this.columntypeses = columntypeses;
+		this.resultses = resultses;
 	}
 
 	public int getId()
@@ -150,6 +157,36 @@ public class Projects implements java.io.Serializable
 	public void setProjectmemberses(Set projectmemberses)
 	{
 		this.projectmemberses = projectmemberses;
+	}
+	
+	public Set getRowtypeses()
+	{
+		return this.rowtypeses;
+	}
+
+	public void setRowtypeses(Set rowtypeses)
+	{
+		this.rowtypeses = rowtypeses;
+	}
+
+	public Set getColumntypeses()
+	{
+		return this.columntypeses;
+	}
+
+	public void setColumntypeses(Set columntypeses)
+	{
+		this.columntypeses = columntypeses;
+	}
+
+	public Set getResultses()
+	{
+		return this.resultses;
+	}
+
+	public void setResultses(Set resultses)
+	{
+		this.resultses = resultses;
 	}
 
 }

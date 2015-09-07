@@ -13,6 +13,7 @@ public class Results implements java.io.Serializable
 
 	private int id;
 	private Components components;
+	private Projects projects;
 	private Users users;
 	private String strresult;
 	private Date updateddt;
@@ -23,18 +24,20 @@ public class Results implements java.io.Serializable
 	{
 	}
 
-	public Results(int id, Components components, Users users, Date updateddt)
+	public Results(int id, Components components, Projects projects, Users users, Date updateddt)
 	{
 		this.id = id;
 		this.components = components;
+		this.projects = projects;
 		this.users = users;
 		this.updateddt = updateddt;
 	}
 
-	public Results(int id, Components components, Users users, String strresult, Date updateddt, Set resultshistories, Set orderses)
+	public Results(int id, Components components, Projects projects, Users users, String strresult, Date updateddt, Set resultshistories, Set orderses)
 	{
 		this.id = id;
 		this.components = components;
+		this.projects = projects;
 		this.users = users;
 		this.strresult = strresult;
 		this.updateddt = updateddt;
@@ -60,6 +63,16 @@ public class Results implements java.io.Serializable
 	public void setComponents(Components components)
 	{
 		this.components = components;
+	}
+	
+	public Projects getProjects()
+	{
+		return this.projects;
+	}
+
+	public void setProjects(Projects projects)
+	{
+		this.projects = projects;
 	}
 
 	public Users getUsers()

@@ -1,26 +1,26 @@
 package edu.tamu.webtoxpi.utils.importdata;
 
-public class Levels
+public class ImportLevel
 {
-	private Levels childLevel;
+	private ImportLevel childLevel;
 	private String code;
 	
-	public Levels()
+	public ImportLevel()
 	{
 	}
 	
-	public Levels(Levels childLevel, String code)
+	public ImportLevel(ImportLevel childLevel, String code)
 	{
 		this.childLevel = childLevel;
 		this.code = code;
 	}
 
-	public Levels getChildLevel()
+	public ImportLevel getChildLevel()
 	{
 		return childLevel;
 	}
 
-	public void setChildLevel(Levels childLevel)
+	public void setChildLevel(ImportLevel childLevel)
 	{
 		this.childLevel = childLevel;
 	}

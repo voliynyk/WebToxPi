@@ -60,13 +60,13 @@ public class DataTransformation
 							String componentName = comp.getName();
 							String resultValue = String.valueOf(substance.getComponents().get(comp.getName()));
 							
-							Levels level1 = new Levels(null, componentSource);
-							Levels level2 = new Levels(level1, type);
-							Levels level3 = new Levels(level2, group);
-							Levels level4 = new Levels(level3, weight);
-							Components component = new Components(componentName, level4);
+							ImportLevel level1 = new ImportLevel(null, componentSource);
+							ImportLevel level2 = new ImportLevel(level1, type);
+							ImportLevel level3 = new ImportLevel(level2, group);
+							ImportLevel level4 = new ImportLevel(level3, weight);
+							ImportComponent component = new ImportComponent(componentName, level4);
 							
-							Results result = new Results();
+							ImportResult result = new ImportResult();
 							result.getRows().add(source);
 							result.getRows().add(casrn);
 							result.getRows().add(chemical);

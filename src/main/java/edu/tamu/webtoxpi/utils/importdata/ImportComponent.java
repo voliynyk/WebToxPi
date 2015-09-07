@@ -1,15 +1,15 @@
 package edu.tamu.webtoxpi.utils.importdata;
 
-public class Components
+public class ImportComponent
 {
 	private String code;
-	private Levels level = null;
+	private ImportLevel level = null;
 	
-	public Components()
+	public ImportComponent()
 	{
 	}
 	
-	public Components(String code, Levels level)
+	public ImportComponent(String code, ImportLevel level)
 	{
 		this.code = code;
 		this.level = level;
@@ -25,12 +25,12 @@ public class Components
 		this.code = code;
 	}
 
-	public Levels getLevel()
+	public ImportLevel getLevel()
 	{
 		return level;
 	}
 
-	public void setLevel(Levels level)
+	public void setLevel(ImportLevel level)
 	{
 		this.level = level;
 	}

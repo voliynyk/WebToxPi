@@ -40,5 +40,23 @@
             </key>
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Projectmembers" />
         </set>
+        <set name="rowtypeses" table="rowtypes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.webtoxpi.dao.model.Rowtypes" />
+        </set>
+        <set name="columntypeses" table="columntypes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.webtoxpi.dao.model.Columntypes" />
+        </set>
+        <set name="resultses" table="results" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.webtoxpi.dao.model.Results" />
+        </set>
     </class>
 </hibernate-mapping>
