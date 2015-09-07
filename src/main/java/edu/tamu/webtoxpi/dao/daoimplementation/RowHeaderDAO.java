@@ -27,7 +27,7 @@ public class RowHeaderDAO extends GenericDAOImpl<Rowheaders, Integer> implements
 		{
 			try
 			{
-				Query query = HibernateUtil.getSession().getNamedQuery("findRowHeadersByCodeAndProject").setString("pcode", pcode);
+				Query query = HibernateUtil.getSession().getNamedQuery("findRowHeadersByCodeAndProject").setString("code", code).setString("pcode", pcode);
 				List<Rowheaders> results = query.list();
 				if (results != null && results.size() > 0)
 				{

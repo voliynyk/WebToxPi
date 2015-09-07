@@ -7,10 +7,12 @@
 		schema="public" optimistic-lock="version">
 		<id name="id" type="int">
 			<column name="id" />
-			<generator class="assigned" />
+			<generator class="sequence">
+				<param name="sequence">columnheaders_id_seq</param>
+			</generator>
 		</id>
 		<many-to-one name="columnheaders" class="edu.tamu.webtoxpi.dao.model.Columnheaders" fetch="select">
-			<column name="parent_id" not-null="true" />
+			<column name="parent_id" />
 		</many-to-one>
 		<many-to-one name="columntypes"	class="edu.tamu.webtoxpi.dao.model.Columntypes" fetch="select">
 			<column name="columntype_id" not-null="true" />
@@ -46,4 +48,12 @@
 			<one-to-many class="edu.tamu.webtoxpi.dao.model.Components" />
 		</set>
 	</class>
+	
+	<query name="findColumnHeadersByCodeAndProject">
+		select res
+		from Columnheaders as res
+		inner join res.columntypes ct
+		inner join ct.projects p
+		where res.code = :code and p.code = :pcode
+	</query>
 </hibernate-mapping>

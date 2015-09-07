@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import edu.tamu.webtoxpi.dao.daointeface.IColumnHeaderDAO;
 import edu.tamu.webtoxpi.dao.model.Columnheaders;
-import edu.tamu.webtoxpi.dao.model.Rowheaders;
 import edu.tamu.webtoxpi.dao.util.GenericDAOImpl;
 import edu.tamu.webtoxpi.dao.util.HibernateUtil;
 
@@ -19,4 +18,26 @@ import edu.tamu.webtoxpi.dao.util.HibernateUtil;
 public class ColumnHeaderDAO extends GenericDAOImpl<Columnheaders, Integer> implements IColumnHeaderDAO
 {
 	private final Logger logger = LoggerFactory.getLogger(ColumnHeaderDAO.class);
+	
+	public Columnheaders findByCodeAndProject(String code, String pcode)
+	{
+		Columnheaders result = null;
+		if (StringUtils.isNotBlank(code) && StringUtils.isNotBlank(pcode))
+		{
+			try
+			{
+				Query query = HibernateUtil.getSession().getNamedQuery("findColumnHeadersByCodeAndProject").setString("code", code).setString("pcode", pcode);
+				List<Columnheaders> results = query.list();
+				if (results != null && results.size() > 0)
+				{
+					result = results.get(0);
+				}
+			}
+			catch (Exception e)
+			{
+				logger.error(e.getMessage(), e);
+			}
+		}
+		return result;
+	}
 }
