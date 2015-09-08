@@ -36,12 +36,12 @@
                 <column name="result_id" />
             </key>
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Orders" />
-        </set>
-        <query name="findResultsByProject">
+        </set>        
+    </class>
+    <query name="findResultsByProject">
 		select res
 		from Results as res
 		inner join res.projects project
 		where project.id = :id
 	</query>
-    </class>
 </hibernate-mapping>

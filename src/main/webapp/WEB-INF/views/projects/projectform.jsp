@@ -10,7 +10,7 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <div class="container">
-
+<!-- <script>alert("selected project: ${projectId}")</script> -->
 	<c:choose>
 		<c:when test="${projectForm['new']}">
 			<h1>Add Project</h1>

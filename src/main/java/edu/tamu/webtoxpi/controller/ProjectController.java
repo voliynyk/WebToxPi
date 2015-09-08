@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ import edu.tamu.webtoxpi.service.manager.ProjectTypeManager;
 import edu.tamu.webtoxpi.service.serviceinterface.IProjectService;
 
 @Controller
+
 public class ProjectController
 {
 	private final Logger logger = LoggerFactory.getLogger(ProjectController.class);
@@ -149,6 +151,23 @@ public class ProjectController
 
 	}
 
+//	@RequestMapping(value = "/projects/{id}/select", method = RequestMethod.POST)
+//    public String selectProject(@PathVariable("id") int id, Model model, HttpSession session)
+//    {
+//		Project project = projectService.findById(id);
+//		model.addAttribute("projectForm", project);
+//		session.setAttribute("projectId" , id);   
+//		return "projects/projectform";
+//    }
+	@RequestMapping(value = "/projects/{id}/select", method = RequestMethod.GET)
+    public String selectProject(@PathVariable("id") int id, Model model, HttpServletRequest request)
+    {
+		Project project = projectService.findById(id);
+		model.addAttribute("projectForm", project);
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId" , id);   
+		return "projects/projectform";
+    }
 	private void populateDefaultModel(Model model)
 	{
 		Map<Integer, String> access = new LinkedHashMap<Integer, String>();

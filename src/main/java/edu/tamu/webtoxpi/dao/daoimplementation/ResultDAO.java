@@ -11,6 +11,8 @@ import edu.tamu.webtoxpi.dao.daointeface.IResultDAO;
 import edu.tamu.webtoxpi.dao.model.Results;
 import edu.tamu.webtoxpi.dao.util.GenericDAOImpl;
 import edu.tamu.webtoxpi.dao.util.HibernateUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Repository
 public class ResultDAO extends GenericDAOImpl<Results, Integer> implements IResultDAO
@@ -23,7 +25,7 @@ public class ResultDAO extends GenericDAOImpl<Results, Integer> implements IResu
 			
 				try
 				{
-					Query query = HibernateUtil.getSession().getNamedQuery("findResultsByProject").setString("prId", id.toString());
+					Query query = HibernateUtil.getSession().getNamedQuery("findResultsByProject").setInteger("id", id);
 					List<Results> results = query.list();
 					if (results != null)
 					{
@@ -33,13 +35,14 @@ public class ResultDAO extends GenericDAOImpl<Results, Integer> implements IResu
 				}
 				catch (Exception ex)
 				{
-
+					System.out.println(ex.toString());
 				}
 			
 			
 		}
 		catch (Exception e)
 		{
+			System.out.println(e.toString());
 		}
 		finally
 		{

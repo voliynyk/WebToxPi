@@ -43,9 +43,11 @@
 						<spring:url value="/projects/${project.id}" var="projectUrl" />
 						<spring:url value="/projects/${project.id}/delete" var="deleteUrl" /> 
 						<spring:url value="/projects/${project.id}/update" var="updateUrl" />
+						<spring:url value="/projects/${project.id}/select" var="selectUrl" />
 
 						<button class="btn btn-info" onclick="location.href='${projectUrl}'">Query</button>
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">Update</button>
+						<button class="btn btn-primary" onclick="location.href='${selectUrl}'">Select</button>
 						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete</button></td>
 				</tr>
 			</c:forEach>
