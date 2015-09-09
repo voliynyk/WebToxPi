@@ -1,7 +1,9 @@
 package edu.tamu.webtoxpi.utils.importdata;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,6 +62,8 @@ public class ImportManager implements Runnable
 			{
 				HibernateUtil.beginTransaction();
 				
+				Map<String, Integer> orderMap = new LinkedHashMap<String, Integer>();
+				
 				Projects currentProject = DAOManager.getInstance().getProjectDAO().findByID(Projects.class, projectId);
 				List<Rowtypes> rowTypes = DAOManager.getInstance().getRowTypeDAO().selectByProject(currentProject.getCode());
 				List<Columntypes> columnTypes = DAOManager.getInstance().getColumnTypeDAO().selectByProject(currentProject.getCode());
@@ -72,33 +76,50 @@ public class ImportManager implements Runnable
 				
 				for (ImportResult result : data.getResults())
 				{
-					ImportComponent component = result.getComponent();
-					
-					List<Rowheaders> rowHeaders = new ArrayList<Rowheaders>();
-					for (int rowCounter = 0; rowCounter < rowTypes.size(); rowCounter++)
+					Integer orderId = -1;
+					if (orderMap.containsKey(result.getOrderKey()))
 					{
-						Rowheaders currentRowHeader = null;
-						String rowCode = result.getRows().get(rowCounter);
-						for (Rowheaders rh : rowHeaderList)
+						orderId = orderMap.get(result.getOrderKey());
+					}
+					else
+					{
+						orderId = DAOManager.getInstance().getOrderDAO().getNextOrderId();
+						
+						List<Rowheaders> rowHeaders = new ArrayList<Rowheaders>();
+						for (int rowCounter = 0; rowCounter < rowTypes.size(); rowCounter++)
 						{
-							if (rowCode.equals(rh.getCode()))
+							Rowheaders currentRowHeader = null;
+							String rowCode = result.getRows().get(rowCounter);
+							for (Rowheaders rh : rowHeaderList)
 							{
-								currentRowHeader = rh;
-								continue;
+								if (rowCode.equals(rh.getCode()))
+								{
+									currentRowHeader = rh;
+									continue;
+								}
 							}
+							if (null == currentRowHeader)
+							{
+								currentRowHeader = DAOManager.getInstance().getRowHeaderDAO().findByCodeAndProject(rowCode, currentProject.getCode());
+							}
+							if (null == currentRowHeader)
+							{
+								currentRowHeader = new Rowheaders(0, rowTypes.get(rowCounter), rowCode, rowCode, DateUtil.GetCurrentDate(), DateUtil.GetCurrentDate());
+								rowHeaderList.add(currentRowHeader);
+							}
+							rowHeaders.add(currentRowHeader);
 						}
-						if (null == currentRowHeader)
+						
+						for (Rowheaders rowHeader : rowHeaders)
 						{
-							currentRowHeader = DAOManager.getInstance().getRowHeaderDAO().findByCodeAndProject(rowCode, currentProject.getCode());
+							orderList.add(new Orders(0, rowHeader, orderId));
 						}
-						if (null == currentRowHeader)
-						{
-							currentRowHeader = new Rowheaders(0, rowTypes.get(rowCounter), rowCode, rowCode, DateUtil.GetCurrentDate(), DateUtil.GetCurrentDate());
-							rowHeaderList.add(currentRowHeader);
-						}
-						rowHeaders.add(currentRowHeader);
+						
+						orderMap.put(result.getOrderKey(), orderId);
 					}
 					
+					ImportComponent component = result.getComponent();
+
 					ImportLevel level = component.getLevel();
 					Columnheaders parentColumnHeader = null;
 					int columnLevel = 0;
@@ -149,15 +170,12 @@ public class ImportManager implements Runnable
 						currentComponent.setColumnheaders(parentColumnHeader);
 						componentList.add(currentComponent);
 					}
-					Integer orderId = DAOManager.getInstance().getOrderDAO().getNextOrderId();
+					
 					Results currentResult = new Results(0, currentComponent, currentProject, Auth.getCurrentUser(), orderId, DateUtil.GetCurrentDate());
 					currentResult.setStrresult(result.getValue());
 					resultList.add(currentResult);
 					
-					for (Rowheaders rowHeader : rowHeaders)
-					{
-						orderList.add(new Orders(0, rowHeader, orderId));
-					}
+
 				}
 				
 				
