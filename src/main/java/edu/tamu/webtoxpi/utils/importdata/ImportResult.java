@@ -49,4 +49,14 @@ public class ImportResult
 	{
 		this.rows = rows;
 	}
+	
+	public String getOrderKey()
+	{
+		String result = "";
+		for (String str : rows)
+		{
+			result += "-" + str + "-";
+		}
+		return result;
+	}
 }
