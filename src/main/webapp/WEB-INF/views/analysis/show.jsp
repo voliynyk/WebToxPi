@@ -9,6 +9,12 @@
 
 <jsp:include page="../fragments/header.jsp" />
 
+        
+        
+<spring:url value="/resources/css/analysis.css" var="analysisCss" />
+<spring:url value="/resources/js/analysis.js" var="analysisJs" />
+<script src="${analysisJs}"></script>
+<link href="${analysisCss}" rel="stylesheet" />
 <div class="container">
 
 	<c:if test="${not empty msg}">
@@ -29,6 +35,8 @@
 	</div>
 
 </div>
+<h1>THIS IS A TEST GRID:</h1>
+<div id="gridContainer"></div>
 
 <jsp:include page="../fragments/footer.jsp" />
 
