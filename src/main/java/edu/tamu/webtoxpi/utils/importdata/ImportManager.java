@@ -149,14 +149,14 @@ public class ImportManager implements Runnable
 						currentComponent.setColumnheaders(parentColumnHeader);
 						componentList.add(currentComponent);
 					}
-
-					Results currentResult = new Results(0, currentComponent, currentProject, Auth.getCurrentUser(), DateUtil.GetCurrentDate());
+					Integer orderId = DAOManager.getInstance().getOrderDAO().getNextOrderId();
+					Results currentResult = new Results(0, currentComponent, currentProject, Auth.getCurrentUser(), orderId, DateUtil.GetCurrentDate());
 					currentResult.setStrresult(result.getValue());
 					resultList.add(currentResult);
 					
 					for (Rowheaders rowHeader : rowHeaders)
 					{
-						orderList.add(new Orders(0, currentResult, rowHeader));
+						orderList.add(new Orders(0, rowHeader, orderId));
 					}
 				}
 				

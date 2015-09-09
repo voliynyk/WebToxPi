@@ -19,6 +19,9 @@
         <many-to-one name="users" class="edu.tamu.webtoxpi.dao.model.Users" fetch="select">
             <column name="updatedby" not-null="true" />
         </many-to-one>
+        <property name="orderId" type="int">
+            <column name="order_id" not-null="true" />
+        </property>
         <property name="strresult" type="string">
             <column name="strresult" />
         </property>
@@ -31,17 +34,5 @@
             </key>
             <one-to-many class="edu.tamu.webtoxpi.dao.model.Resultshistory" />
         </set>
-        <set name="orderses" table="orders" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="result_id" />
-            </key>
-            <one-to-many class="edu.tamu.webtoxpi.dao.model.Orders" />
-        </set>        
     </class>
-    <query name="findResultsByProject">
-		select res
-		from Results as res
-		inner join res.projects project
-		where project.id = :id
-	</query>
 </hibernate-mapping>

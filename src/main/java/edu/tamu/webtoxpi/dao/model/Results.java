@@ -10,39 +10,39 @@ import java.util.Set;
  */
 public class Results implements java.io.Serializable
 {
-
 	private int id;
 	private Components components;
 	private Projects projects;
 	private Users users;
+	private int orderId;
 	private String strresult;
 	private Date updateddt;
 	private Set resultshistories = new HashSet(0);
-	private Set orderses = new HashSet(0);
 
 	public Results()
 	{
 	}
 
-	public Results(int id, Components components, Projects projects, Users users, Date updateddt)
+	public Results(int id, Components components, Projects projects, Users users, int orderId, Date updateddt)
 	{
 		this.id = id;
 		this.components = components;
 		this.projects = projects;
 		this.users = users;
+		this.orderId = orderId;
 		this.updateddt = updateddt;
 	}
 
-	public Results(int id, Components components, Projects projects, Users users, String strresult, Date updateddt, Set resultshistories, Set orderses)
+	public Results(int id, Components components, Projects projects, Users users, int orderId, String strresult, Date updateddt, Set resultshistories)
 	{
 		this.id = id;
 		this.components = components;
 		this.projects = projects;
 		this.users = users;
+		this.orderId = orderId;
 		this.strresult = strresult;
 		this.updateddt = updateddt;
 		this.resultshistories = resultshistories;
-		this.orderses = orderses;
 	}
 
 	public int getId()
@@ -64,7 +64,7 @@ public class Results implements java.io.Serializable
 	{
 		this.components = components;
 	}
-	
+
 	public Projects getProjects()
 	{
 		return this.projects;
@@ -83,6 +83,16 @@ public class Results implements java.io.Serializable
 	public void setUsers(Users users)
 	{
 		this.users = users;
+	}
+
+	public int getOrderId()
+	{
+		return this.orderId;
+	}
+
+	public void setOrderId(int orderId)
+	{
+		this.orderId = orderId;
 	}
 
 	public String getStrresult()
@@ -114,15 +124,4 @@ public class Results implements java.io.Serializable
 	{
 		this.resultshistories = resultshistories;
 	}
-
-	public Set getOrderses()
-	{
-		return this.orderses;
-	}
-
-	public void setOrderses(Set orderses)
-	{
-		this.orderses = orderses;
-	}
-
 }

@@ -8,23 +8,18 @@ public class Orders implements java.io.Serializable
 {
 
 	private int id;
-	private Results results;
 	private Rowheaders rowheaders;
+	private int orderId;
 
 	public Orders()
 	{
 	}
 
-	public Orders(int id)
+	public Orders(int id, Rowheaders rowheaders, int orderId)
 	{
 		this.id = id;
-	}
-
-	public Orders(int id, Results results, Rowheaders rowheaders)
-	{
-		this.id = id;
-		this.results = results;
 		this.rowheaders = rowheaders;
+		this.orderId = orderId;
 	}
 
 	public int getId()
@@ -37,16 +32,6 @@ public class Orders implements java.io.Serializable
 		this.id = id;
 	}
 
-	public Results getResults()
-	{
-		return this.results;
-	}
-
-	public void setResults(Results results)
-	{
-		this.results = results;
-	}
-
 	public Rowheaders getRowheaders()
 	{
 		return this.rowheaders;
@@ -55,6 +40,16 @@ public class Orders implements java.io.Serializable
 	public void setRowheaders(Rowheaders rowheaders)
 	{
 		this.rowheaders = rowheaders;
+	}
+
+	public int getOrderId()
+	{
+		return this.orderId;
+	}
+
+	public void setOrderId(int orderId)
+	{
+		this.orderId = orderId;
 	}
 
 }

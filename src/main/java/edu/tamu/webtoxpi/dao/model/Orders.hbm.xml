@@ -10,11 +10,11 @@
 				<param name="sequence">orders_id_seq</param>
 			</generator>
 		</id>
-        <many-to-one name="results" class="edu.tamu.webtoxpi.dao.model.Results" fetch="select">
-            <column name="result_id" />
-        </many-to-one>
         <many-to-one name="rowheaders" class="edu.tamu.webtoxpi.dao.model.Rowheaders" fetch="select">
             <column name="rowheader_id" />
         </many-to-one>
+        <property name="orderId" type="int">
+            <column name="order_id" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>
