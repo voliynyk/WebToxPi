@@ -6,11 +6,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <jsp:include page="../fragments/header.jsp" />
 
+ 
+<link href="/webtoxpi/resources/external/select2/css/select2.css" rel="stylesheet" />
+<script src="/webtoxpi/resources/external/select2/js/select2.js"></script>
+
+<script type="text/javascript">
+function formatValues(data) {return data.firstname + ' ' + data.lastname;}
+</script>
+
+
+
+
 <div class="container">
-<!-- <script>alert("selected project: ${projectId}")</script> -->
+
 	<c:choose>
 		<c:when test="${projectForm['new']}">
 			<h1>Add Project</h1>
@@ -84,7 +94,82 @@
 				</div>
 			</div>
 		</spring:bind>
+
+
+		<spring:bind path="projectmanagers">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Project Managers</label>
+				<div class="col-sm-10">
+					<form:select id="projectmanagers" path="projectmanagers" class="form-control">
+					</form:select>
+					<form:errors path="projectmanagers" class="control-label" />
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+		</spring:bind>
 		
+		<spring:bind path="projectmembers">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Project Members</label>
+				<div class="col-sm-10">
+					<form:select id="projectmembers" path="projectmembers" class="form-control">
+					</form:select>
+					<form:errors path="projectmembers" class="control-label" />
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+		</spring:bind>
+		
+		<spring:bind path="projectreviewers">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Project Reviewers</label>
+				<div class="col-sm-10">
+					<form:select id="projectreviewers" path="projectreviewers" class="form-control">
+					</form:select>
+					<form:errors path="projectreviewers" class="control-label" />
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+		</spring:bind>
+
+
+
+<script type="text/javascript">
+function select2function(selectObject, desc)
+{
+	selectObject.select2({
+	    placeholder : "Search for a " + desc,
+	    multiple : true,
+	    minimumInputLength : 2,
+	    formatResult: function (item) { return ('<div>' + item.id + ' - ' + item.text + '</div>'); },
+	    formatSelection: function (item) { return (item.text); },
+	    ajax: {
+	        url: "http://localhost:8080/webtoxpi/userslist",
+	        dataType: 'json',
+	        quietMillis: 250,
+	        cache: true,
+	        processResults: function (data) {
+	            return { 
+	              results: $.map(data, function (item) {
+	                return {
+	                  id: item.id,
+	                  text: item.firstname + ' ' + item.lastname
+	                }
+	              }) 
+	            };
+	          }
+	    }
+	});
+};
+
+select2function($("#projectmanagers"), "managers");
+select2function($("#projectmembers"), "members");
+select2function($("#projectreviewers"), "reviewers");
+
+
+</script>
+
+
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<c:choose>
@@ -102,6 +187,5 @@
 </div>
 
 <jsp:include page="../fragments/footer.jsp" />
-
 </body>
 </html>

@@ -15,6 +15,9 @@ public class Project implements java.io.Serializable
 	private String notes;
 	private Date registereddt;
 	private Date lastvisitdt;
+	private String[] projectmanagers;
+	private String[] projectmembers;
+	private String[] projectreviewers;
 
 	public Project()
 	{
@@ -44,6 +47,36 @@ public class Project implements java.io.Serializable
 	public void setId(Integer id)
 	{
 		this.id = id;
+	}
+	
+	public String[] getProjectmanagers()
+	{
+		return this.projectmanagers;
+	}
+
+	public void setProjectmanagers(String[] projectmanagers)
+	{
+		this.projectmanagers = projectmanagers;
+	}
+	
+	public String[] getProjectmembers()
+	{
+		return this.projectmembers;
+	}
+
+	public void setProjectmembers(String[] projectmembers)
+	{
+		this.projectmembers = projectmembers;
+	}
+	
+	public String[] getProjectreviewers()
+	{
+		return this.projectreviewers;
+	}
+
+	public void setProjectreviewers(String[] projectreviewers)
+	{
+		this.projectreviewers = projectreviewers;
 	}
 
 	public Integer getProjecttype()

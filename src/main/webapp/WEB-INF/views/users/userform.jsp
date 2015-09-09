@@ -103,7 +103,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Address</label>
 				<div class="col-sm-10">
-					<form:textarea path="address1" type="text" class="form-control" id="address1" placeholder="Address" />
+					<form:input path="address1" type="text" class="form-control" id="address1" placeholder="Address" />
 					<form:errors path="address1" class="control-label" />
 				</div>
 			</div>
@@ -113,7 +113,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Address</label>
 				<div class="col-sm-10">
-					<form:textarea path="address2" type="text" class="form-control" id="address2" placeholder="Address" />
+					<form:input path="address2" type="text" class="form-control" id="address2" placeholder="Address" />
 					<form:errors path="address2" class="control-label" />
 				</div>
 			</div>
@@ -123,7 +123,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Phone Number</label>
 				<div class="col-sm-10">
-					<form:textarea path="phone" type="text" class="form-control" id="phone" placeholder="Phone" />
+					<form:input path="phone" type="text" class="form-control" id="phone" placeholder="Phone" />
 					<form:errors path="phone" class="control-label" />
 				</div>
 			</div>
@@ -133,7 +133,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Country</label>
 				<div class="col-sm-10">
-					<form:textarea path="country" type="text" class="form-control" id="country" placeholder="Country" />
+					<form:input path="country" type="text" class="form-control" id="country" placeholder="Country" />
 					<form:errors path="country" class="control-label" />
 				</div>
 			</div>
@@ -143,7 +143,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">State</label>
 				<div class="col-sm-10">
-					<form:textarea path="state" type="text" class="form-control" id="state" placeholder="State" />
+					<form:input path="state" type="text" class="form-control" id="state" placeholder="State" />
 					<form:errors path="state" class="control-label" />
 				</div>
 			</div>
@@ -153,7 +153,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Zip Code</label>
 				<div class="col-sm-10">
-					<form:textarea path="zip" type="text" class="form-control" id="state" placeholder="Zip" />
+					<form:input path="zip" type="text" class="form-control" id="state" placeholder="Zip" />
 					<form:errors path="zip" class="control-label" />
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Organization Name</label>
 				<div class="col-sm-10">
-					<form:textarea path="organization" type="text" class="form-control" id="state" placeholder="Organization" />
+					<form:input path="organization" type="text" class="form-control" id="state" placeholder="Organization" />
 					<form:errors path="organization" class="control-label" />
 				</div>
 			</div>
@@ -173,7 +173,7 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Organization Address</label>
 				<div class="col-sm-10">
-					<form:textarea path="organaddress" type="text" class="form-control" id="state" placeholder="Organization Address" />
+					<form:input path="organaddress" type="text" class="form-control" id="state" placeholder="Organization Address" />
 					<form:errors path="organaddress" class="control-label" />
 				</div>
 			</div>
