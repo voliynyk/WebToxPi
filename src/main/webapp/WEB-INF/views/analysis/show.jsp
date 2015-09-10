@@ -27,11 +27,32 @@
 	</c:if>
 
 	<h1>Analysis:</h1>
+	<strong>'${results}'</strong>
 	<br />
+ <script>
+ $(function () {
+		$("#gridContainer").dxDataGrid({
+//		    dataSource:  "${analysis.results}",    
+		    dataSource: ${results},
+//		    showRowLines: true,
+		    paging: {
+		        pageSize: 10
+		    },
+		    pager: {
+		        showPageSizeSelector: true,
+		        allowedPageSizes: [5, 10, 20]
+		    },
+//		    columns: '${analysis.columns}',
+		    columns: 	${columns},
+		    rowAlternationEnabled: true
+		});
+	});
+	
 
+ </script> 
 	<div class="row">
 		<label class="col-sm-2">ID</label>
-		<div class="col-sm-10">the result: ${analysis.results}</div>
+
 	</div>
 
 </div>

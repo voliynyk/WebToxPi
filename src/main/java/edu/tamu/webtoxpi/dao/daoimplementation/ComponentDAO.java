@@ -1,5 +1,6 @@
 package edu.tamu.webtoxpi.dao.daoimplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.tamu.webtoxpi.dao.daointeface.IComponentDAO;
 import edu.tamu.webtoxpi.dao.model.Components;
+import edu.tamu.webtoxpi.dao.model.Results;
 import edu.tamu.webtoxpi.dao.util.GenericDAOImpl;
 import edu.tamu.webtoxpi.dao.util.HibernateUtil;
 
@@ -38,5 +40,39 @@ public class ComponentDAO extends GenericDAOImpl<Components, Integer> implements
 			}
 		}
 		return result;
+	}
+	
+	public List<Components> findComponentByProject(Integer id)
+	{
+		try
+		{
+			HibernateUtil.beginTransaction();
+			
+				try
+				{
+					Query query = HibernateUtil.getSession().getNamedQuery("findComponentsByProject").setInteger("id", id);
+					List<Components> components = query.list();
+					if (components != null)
+					{
+						return components;
+					}
+		
+				}
+				catch (Exception ex)
+				{
+					System.out.println(ex.toString());
+				}
+			
+			
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally
+		{
+			HibernateUtil.rollbackTransaction();
+		}
+		return new ArrayList();
 	}
 }

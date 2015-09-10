@@ -1,18 +1,8 @@
-$(function () {
-	$("#gridContainer").dxDataGrid({
-	    dataSource: customers,	    
-//	    showRowLines: true,
-	    paging: {
-	        pageSize: 10
-	    },
-	    pager: {
-	        showPageSizeSelector: true,
-	        allowedPageSizes: [5, 10, 20]
-	    },
-	    columns: ['CompanyName', 'City', 'State', 'Phone', 'Fax'],
-	    rowAlternationEnabled: true
-	});
-});
+//alert("${analysis.results}");
+//var ddd = ${analysis.results};
+//alert (ddd);
+//
+
 var customers = [{
     "ID": 1,
     "CompanyName": "Super Mart of the West",

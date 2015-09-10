@@ -1,41 +1,38 @@
 package edu.tamu.webtoxpi.dao.entity;
 
+import java.util.Map;
+
 public class Analysis
 {
-	private Integer id;
-	private String results;	
+	public Map<String, String>[] results;	
+	public String[] columns;	
 	
 	public Analysis()
 	{}
 	
-	public Analysis(Integer id, String results)
+	public Analysis( Map<String, String>[] results, String[] columns)
 	{
-		super();
-		this.id = id;
-		this.results = results;		
-	}
-	
-	public boolean isNew() {
-		return (this.id == null);
-	}
-	
-	public Integer getId()
-	{
-		return id;
+		this.results = results;
+		this.columns = columns;	
 	}
 
-	public void setId(Integer id)
-	{
-		this.id = id;
-	}
-
-	public String getResults()
+	public Map<String, String>[] getResults()
 	{
 		return results;
 	}
 
-	public void setResults(String results)
+	public void setResults(Map<String, String>[] results)
 	{
 		this.results = results;
+	}	
+	
+	public String[] getColumns()
+	{
+		return columns;
+	}
+
+	public void setColumns(String[] columns)
+	{
+		this.columns = columns;
 	}	
 }
