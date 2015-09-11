@@ -55,40 +55,15 @@ public class AnalysisService implements IAnalysisService
 			{	
 				arrComponents.add(component.getCode());
 			}
-//			Map<String, String>[] resultsArr = (Map<String, String>[]) new Map[arrmResults.size()];
-//			resultsArr = arrmResults.toArray(resultsArr);
-//			analysis.setResults(resultsArr);
+
 			analysis.setResults(arrmResults.toArray((Map<String, String>[]) new Map[arrmResults.size()]));
-			//analysis.setColumns(components.toArray(new String[components.size()]));
+		
 			analysis.setColumns(arrComponents.toArray(new String[arrComponents.size()]));
 			
 		}
 		
 		
 		
-//		if (results.size() > 0)
-//		{
-//			
-//			StringBuilder sResults = new StringBuilder();
-//			
-//			for (Results sResult : results)
-//			{
-//				sResult.getComponents().getCode()
-//				sResults.append(sResult.getStrresult() + ",");
-//			}
-//			analysis.setResults(sResults.substring(0, sResults.length() - 1));
-//			
-//			ArrayList<String> lChSource = new ArrayList<String>();
-//		       for (Sources chSource : DataManager.getChSources())
-//		   	{
-//		    	   lChSource.add(chSource.getCode());
-//		   	}
-//		       String arrChSource = lChSource.toString();
-//		   %>
-//		   var dataChSource = '<%= arrChSource %>';
-//		   dataChSource = dataChSource.slice(1, dataChSource.length - 1);
-//		   var inputChSource = dataChSource.split(", ");  
-//		}
 		return analysis;
 	}	
 }

@@ -32,7 +32,15 @@
  <script>
  $(function () {
 		$("#gridContainer").dxDataGrid({
-//		    dataSource:  "${analysis.results}",    
+			allowColumnReordering: true,
+		    allowColumnResizing: true,
+		    columnAutoWidth: true,
+		    columnChooser: {
+		        enabled: true
+		    },
+		    columnFixing: { 
+		        enabled: true
+		    }, 
 		    dataSource: ${results},
 //		    showRowLines: true,
 		    paging: {
@@ -44,11 +52,25 @@
 		    },
 //		    columns: '${analysis.columns}',
 		    columns: 	${columns},
-		    rowAlternationEnabled: true
+		    rowAlternationEnabled: true,
+		    onContentReady : 	ddd
 		});
 	});
 	
+ 
+ var ddd = function () {
+     var tr1 = '<tr id="headerId" class="dx-row dx-column-lines" >';        
+     tr1 += '       <td class="dx-datagrid-action" colspan="1">Some text header</td>';
+     tr1 += '       <td class="dx-datagrid-action" colspan="1">Some text header</td>';
+     tr1 += '</tr>'
 
+     var tr = $("#gridContainer").find('.dx-header-row')[0];
+     var ele = document.getElementById("headerId");
+     if (tr && !ele) $(tr1).insertBefore(tr.parentElement);
+}
+  setTimeout(function () {
+// 	  ddd();
+}, 100); 
  </script> 
 	<div class="row">
 		<label class="col-sm-2">ID</label>
